@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   userImg: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 150,
     marginTop: 40,
   },
   h1: {
@@ -42,7 +42,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <LinearGradient
-        colors={['#6F62AB', '#FFF', '#FFF']}
+        colors={['#B0A1F2', '#FFF', '#FFF']}
         style={styles.gradient}>
         <View style={styles.container}>
           <Image source={userImg} style={styles.userImg} />
