@@ -18,6 +18,7 @@ Application analyzes ingredient data and returns possible dietary triggers based
 
 * Clone repository from https://github.com/william-chu/epicodus-capstone
 * Open project folder > Wireframes > TroubleChute.sketch to view wireframes
+* To view project, go to https://snack.expo.io/@william-chu/github.com-william-chu-epicodus-capstone
 
 ## Sketch Screenshots
 

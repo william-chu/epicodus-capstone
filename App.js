@@ -6,8 +6,18 @@ import { createStackNavigator } from 'react-navigation';
 import { Font } from 'expo';
 
 const RootStack = createStackNavigator({
-  Login: LoginScreen,
-  Home: HomeScreen,
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      header: null,
+    }
+  }
  },
  {
    initialRouteName: 'Home',

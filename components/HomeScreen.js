@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableHighlight, Button, Text, Image, View } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, Button, Text, Image, View } from 'react-native';
 import { LinearGradient } from 'expo';
 import userImg from '../assets/images/userimg.png';
 import mealBtn from '../assets/images/mealbtn.png';
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   userImg: {
     width: 100,
     height: 100,
-    marginTop: 20,
+    marginTop: 40,
   },
   h1: {
     fontSize: 20,
@@ -48,16 +48,16 @@ export default class HomeScreen extends React.Component {
           <Image source={userImg} style={styles.userImg} />
           <Text style={styles.h1}>Let's Get Started...</Text>
           <View style={styles.flex}>
-            <TouchableHighlight onPress={() => this.props.navigation.navigate('Login')} >
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Login')} >
               <Image source={mealBtn} style={styles.mealBtn} />
-            </TouchableHighlight>
-            <TouchableHighlight onPress={() => this.props.navigation.navigate('Login')} >
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Login')} >
               <Image source={trackBtn} style={styles.trackBtn} />
-            </TouchableHighlight>
+            </TouchableWithoutFeedback>
           </View>
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('Login')} >
+          <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Login')} >
             <Image source={analyzeBtn} style={styles.analyzeBtn} />
-          </TouchableHighlight>
+          </TouchableWithoutFeedback>
             <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
