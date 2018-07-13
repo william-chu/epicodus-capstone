@@ -36,7 +36,8 @@ Application analyzes ingredient data and returns possible dietary triggers based
 ## Technologies Used
 
 * Sketch
-* React Native (bootstrapped using create-react-native-app)
+* React Native (bootstrapped using create-react-native-app, https://facebook.github.io/react-native/)
+* React-Navigation (for routing https://reactnavigation)
 
 ## Media Attribution
 
