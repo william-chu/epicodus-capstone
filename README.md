@@ -27,9 +27,14 @@ Application analyzes ingredient data and returns possible dietary triggers based
 ##### Prototype
 ![TroubleChute Prototype](https://github.com/william-chu/epicodus-capstone/blob/master/Wireframes/Prototype.png?raw=true)
 
+## Planning
+
+#### Component Tree
+
 ## Technologies Used
 
 * Sketch
+* React Native (bootstrapped using create-react-native-app)
 
 ## Media Attribution
 
