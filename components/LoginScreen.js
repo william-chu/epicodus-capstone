@@ -1,19 +1,27 @@
 import React from 'react';
-import { StyleSheet, Button, Text, Image, View } from 'react-native';
+import { StyleSheet, TouchableHighlight, Button, Text, Image, View } from 'react-native';
 import { LinearGradient } from 'expo';
 import stomachImg from '../assets/images/stomach.png';
 import loginBtn from '../assets/images/loginbtn.png';
 
 const styles = StyleSheet.create({
-  container: {
+  gradient: {
     flex: 1,
+  },
+  container: {
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   slogan: {
     color: '#ffffff',
     fontWeight: 'bold',
-    marginLeft: 30,
     marginTop: 10,
+    marginBottom: 10,
+  },
+  loginBtn: {
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    borderRadius: 20,
   }
 });
 
@@ -22,17 +30,18 @@ export default class LoginScreen extends React.Component {
     return (
       <LinearGradient
         colors={['#B0A1F2', '#6F62AB']}
-        style = {styles.container}>
-        <View>
+        style={styles.gradient}>
+        <View style={styles.container}>
           <Image
             resizeMode={'cover'}
             source={stomachImg} />
-          <Text style = {styles.slogan}>{`
-            Discover your dietary triggers
-            for better digestive health
+          <Text style={styles.slogan}>{`
+Discover your dietary triggers
+for better digestive health
           `}</Text>
-          <Button title='Login' onPress={() => this.props.navigation.navigate('Home')} />
-          <Image source={loginBtn} />
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('Home')} >
+            <Image source={loginBtn} style={styles.loginBtn} />
+          </TouchableHighlight>
         </View>
       </LinearGradient>
     );
