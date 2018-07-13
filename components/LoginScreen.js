@@ -14,10 +14,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   slogan: {
-    color: '#ffffff',
+    color: '#FFFFFF',
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 10,
+    fontWeight: '400',
+    letterSpacing: .2,
   },
   loginBtn: {
     backgroundColor: 'rgba(255,255,255,0.7)',
