@@ -31,6 +31,8 @@ Application analyzes ingredient data and returns possible dietary triggers based
 
 #### Component Tree
 
+![TroubleChute Component Tree](https://github.com/william-chu/epicodus-capstone/blob/master/Wireframes/ComponentTree.png?raw=true)
+
 ## Technologies Used
 
 * Sketch
