@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginScreen from './components/LoginScreen';
-import HomeScreen from './components/HomeScreen';
+import Login from './components/Login';
+import Home from './components/Home';
 import LogMeal from './components/LogMeal';
 import Track from './components/Track';
 import Analyze from './components/Analyze';
@@ -10,13 +10,13 @@ import { Font } from 'expo';
 
 const RootStack = createStackNavigator({
     Login: {
-      screen: LoginScreen,
+      screen: Login,
       navigationOptions: {
         header: null,
       }
     },
     Home: {
-      screen: HomeScreen,
+      screen: Home,
       navigationOptions: {
         header: null,
       }

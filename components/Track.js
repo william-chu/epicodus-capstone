@@ -1,27 +1,12 @@
 import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback, Text, Image, View } from 'react-native';
 import { LinearGradient } from 'expo';
+import styles from './styles';
 import trackBtn from '../assets/images/trackbtn.png';
 import footer from '../assets/images/footer.png';
 
-const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  trackBtn: {
-    marginTop: 40,
-    width: 100,
-    height: 100,
-  },
-  footer: {
-    marginBottom: 20,
-  }
+const compStyles = StyleSheet.create({
+
 });
 
 export default class Track extends React.Component {
@@ -31,7 +16,7 @@ export default class Track extends React.Component {
         colors={['#B0A1F2', '#FFF', '#FFF']}
         style={styles.gradient}>
         <View style={styles.container}>
-          <Image source={trackBtn} style={styles.trackBtn} />
+          <Image source={trackBtn} style={styles.headerImage} />
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>

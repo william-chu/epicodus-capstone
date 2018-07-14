@@ -1,26 +1,18 @@
 import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback, Button, Text, TextInput, Image, View } from 'react-native';
 import { LinearGradient } from 'expo';
+import styles from './styles';
 import stomachImg from '../assets/images/stomach.png';
 import loginBtn from '../assets/images/loginbtn.png';
 
-const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  slogan: {
+const compStyles = StyleSheet.create({
+  loginSlogan: {
     color: '#FFFFFF',
     fontWeight: 'bold',
     fontWeight: '400',
     letterSpacing: .2,
   },
-  textInput: {
+  loginInput: {
    margin: 5,
    height: 25,
    width: 200,
@@ -35,7 +27,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class LoginScreen extends React.Component {
+export default class Login extends React.Component {
   render() {
     return (
       <LinearGradient
@@ -45,24 +37,24 @@ export default class LoginScreen extends React.Component {
           <Image
             resizeMode={'cover'}
             source={stomachImg} />
-          <Text style={styles.slogan}>{`
+          <Text style={compStyles.loginSlogan}>{`
 Discover your dietary triggers
 for better digestive health
           `}</Text>
           <View>
             <TextInput
-              style={styles.textInput}
+              style={compStyles.loginInput}
               editable={true}
               maxLength={40}
               placeholder={'Username'} />
             <TextInput
-              style={styles.textInput}
+              style={compStyles.loginInput}
               editable={true}
               maxLength={40}
               placeholder={'Password'} />
           </View>
           <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')} >
-            <Image source={loginBtn} style={styles.loginBtn} />
+            <Image source={loginBtn} style={compStyles.loginBtn} />
           </TouchableWithoutFeedback>
         </View>
       </LinearGradient>
