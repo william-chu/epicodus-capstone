@@ -1,21 +1,26 @@
 import { StyleSheet } from 'react-native';
-import { Font } from 'expo';
 
 // General App Styles
 export default StyleSheet.create({
   gradient: {
     flex: 1,
   },
-  container: {
+  containerFluid: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
   headerImage: {
-    marginTop: 40,
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
   },
   flex: {
     flexDirection: 'column',
@@ -26,7 +31,6 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   footer: {
-    marginBottom: 20,
   },
   h1: {
     fontSize: 20,

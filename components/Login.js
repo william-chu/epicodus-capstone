@@ -22,6 +22,7 @@ const compStyles = StyleSheet.create({
     marginTop: -20,
     marginBottom: -10,
     fontSize: 16,
+    // fontFamily: 'Oswald Regular',
   },
   loginInput: {
    marginBottom: 5,
@@ -44,7 +45,7 @@ export default class Login extends React.Component {
       <LinearGradient
         colors={['#B0A1F2', '#6F62AB']}
         style={styles.gradient}>
-        <View style={styles.container}>
+        <View style={styles.containerFluid}>
           <Image
             resizeMode={'cover'}
             source={stomachImg}

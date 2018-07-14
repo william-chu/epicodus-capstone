@@ -25,6 +25,8 @@ export default class Analyze extends React.Component {
             <Image source={analyzeBtn} style={styles.headerImage} />
             <Text style={styles.h1}>Our Analysis</Text>
           </View>
+          <Text>These are the logged meals that correlated with you not feeling well in the last 30 days.</Text>
+          <Text>Possible dietary triggers:</Text>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
