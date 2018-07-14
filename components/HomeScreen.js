@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Button, Text, Image, View } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, Text, Image, View } from 'react-native';
 import { LinearGradient } from 'expo';
 import userImg from '../assets/images/userimg.png';
 import mealBtn from '../assets/images/mealbtn.png';
@@ -48,14 +48,14 @@ export default class HomeScreen extends React.Component {
           <Image source={userImg} style={styles.userImg} />
           <Text style={styles.h1}>Let's Get Started...</Text>
           <View style={styles.flex}>
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Login')} >
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('LogMeal')} >
               <Image source={mealBtn} style={styles.mealBtn} />
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Login')} >
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Track')} >
               <Image source={trackBtn} style={styles.trackBtn} />
             </TouchableWithoutFeedback>
           </View>
-          <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Login')} >
+          <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Analyze')} >
             <Image source={analyzeBtn} style={styles.analyzeBtn} />
           </TouchableWithoutFeedback>
             <Image source={footer} style={styles.footer} />
