@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Text, Image, View } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+ } from 'react-native';
 import { LinearGradient } from 'expo';
 import styles from './styles';
 import userImg from '../assets/images/userimg.png';

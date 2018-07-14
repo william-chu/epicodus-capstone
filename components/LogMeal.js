@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Text, Image, View } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { LinearGradient } from 'expo';
 import styles from './styles';
 import mealBtn from '../assets/images/mealbtn.png';
@@ -18,6 +24,13 @@ export default class LogMeal extends React.Component {
         <View style={styles.container}>
           <Image source={mealBtn} style={styles.headerImage} />
           <Text style={styles.h1}>What did you eat?</Text>
+          <TextInput
+            style={styles.formInput}
+            editable={true}
+            maxLength={40}
+            placeholder={'Item1, Item2...'}
+          />
+          <Text style={styles.h1}>Which meal?</Text>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>

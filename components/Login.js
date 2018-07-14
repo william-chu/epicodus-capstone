@@ -1,5 +1,13 @@
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Button, Text, TextInput, Image, View } from 'react-native';
+import {
+  Button,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import { LinearGradient } from 'expo';
 import styles from './styles';
 import stomachImg from '../assets/images/stomach.png';
@@ -13,7 +21,7 @@ const compStyles = StyleSheet.create({
     letterSpacing: .2,
   },
   loginInput: {
-   margin: 5,
+   marginBottom: 5,
    height: 25,
    width: 200,
    padding: 5,
@@ -23,7 +31,7 @@ const compStyles = StyleSheet.create({
   loginBtn: {
     backgroundColor: 'rgba(255,255,255,0.7)',
     borderRadius: 20,
-    marginBottom: 20,
+    marginBottom: 10,
   }
 });
 
@@ -36,7 +44,8 @@ export default class Login extends React.Component {
         <View style={styles.container}>
           <Image
             resizeMode={'cover'}
-            source={stomachImg} />
+            source={stomachImg}
+          />
           <Text style={compStyles.loginSlogan}>{`
 Discover your dietary triggers
 for better digestive health
@@ -46,12 +55,15 @@ for better digestive health
               style={compStyles.loginInput}
               editable={true}
               maxLength={40}
-              placeholder={'Username'} />
+              placeholder={'Username'}
+            />
             <TextInput
               style={compStyles.loginInput}
               editable={true}
               maxLength={40}
-              placeholder={'Password'} />
+              placeholder={'Password'}
+              secureTextEntry={true}
+            />
           </View>
           <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')} >
             <Image source={loginBtn} style={compStyles.loginBtn} />

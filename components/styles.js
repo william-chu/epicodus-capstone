@@ -11,10 +11,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  h1: {
-    fontSize: 20,
-    color: '#4A4A4A',
-    textAlign: 'center',
+  headerImage: {
+    marginTop: 40,
+    width: 100,
+    height: 100,
   },
   flexRow: {
     flexDirection: 'row',
@@ -23,9 +23,24 @@ export default StyleSheet.create({
   footer: {
     marginBottom: 20,
   },
-  headerImage: {
-    marginTop: 40,
-    width: 100,
-    height: 100,
+  h1: {
+    fontSize: 20,
+    color: '#4A4A4A',
+    textAlign: 'center',
   },
+  formInput: {
+    marginBottom: 5,
+    height: 25,
+    width: 200,
+    padding: 5,
+    borderRadius: 5,
+    borderWidth: .5,
+    borderColor: '#4A4A4A',
+    backgroundColor: 'rgba(255,255,255,0.7)',
+  },
+  btnStyle: {
+    color: '#FFF',
+    backgroundColor: '#4A4A4A',
+    padding: 5,
+  }
 });

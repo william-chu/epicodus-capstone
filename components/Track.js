@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Text, Image, View } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { LinearGradient } from 'expo';
 import styles from './styles';
 import trackBtn from '../assets/images/trackbtn.png';
@@ -17,6 +23,7 @@ export default class Track extends React.Component {
         style={styles.gradient}>
         <View style={styles.container}>
           <Image source={trackBtn} style={styles.headerImage} />
+          <Text style={styles.h1}>Where on the scale?</Text>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
