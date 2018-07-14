@@ -22,8 +22,14 @@ export default class Track extends React.Component {
         colors={['#B0A1F2', '#FFF', '#FFF']}
         style={styles.gradient}>
         <View style={styles.container}>
-          <Image source={trackBtn} style={styles.headerImage} />
-          <Text style={styles.h1}>Where on the scale?</Text>
+          <View style={styles.flex}>
+            <Image source={trackBtn} style={styles.headerImage} />
+            <Text style={styles.h1}>Track BM</Text>
+          </View>
+          <Text style={styles.h3}>Where on the scale?</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+            <Text style={styles.btn}>SEE SCALE</Text>
+          </TouchableOpacity>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>

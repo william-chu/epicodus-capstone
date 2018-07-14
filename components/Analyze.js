@@ -21,7 +21,10 @@ export default class Analyze extends React.Component {
         colors={['#B0A1F2', '#FFF', '#FFF']}
         style={styles.gradient}>
         <View style={styles.container}>
-          <Image source={analyzeBtn} style={styles.headerImage} />
+          <View style={styles.flex}>
+            <Image source={analyzeBtn} style={styles.headerImage} />
+            <Text style={styles.h1}>Our Analysis</Text>
+          </View>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>

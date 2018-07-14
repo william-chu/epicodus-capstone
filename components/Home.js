@@ -36,8 +36,10 @@ export default class HomeScreen extends React.Component {
         colors={['#B0A1F2', '#FFF', '#FFF']}
         style={styles.gradient}>
         <View style={styles.container}>
-          <Image source={userImg} style={compStyles.userImg} />
-          <Text style={styles.h1}>What would you like to do?</Text>
+          <View style={styles.flex}>
+            <Image source={userImg} style={compStyles.userImg} />
+            <Text style={styles.h2}>What would you like to do?</Text>
+          </View>
           <View style={styles.flexRow}>
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('LogMeal')} >
               <View style={compStyles.mealBtn}>

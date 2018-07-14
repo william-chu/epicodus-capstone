@@ -22,15 +22,18 @@ export default class LogMeal extends React.Component {
         colors={['#B0A1F2', '#FFF', '#FFF']}
         style={styles.gradient}>
         <View style={styles.container}>
-          <Image source={mealBtn} style={styles.headerImage} />
-          <Text style={styles.h1}>What did you eat?</Text>
+          <View style={styles.flex}>
+            <Image source={mealBtn} style={styles.headerImage} />
+            <Text style={styles.h1}>Log Meal</Text>
+          </View>
+          <Text style={styles.h3}>What did you eat?</Text>
           <TextInput
             style={styles.formInput}
             editable={true}
             maxLength={40}
             placeholder={'Item1, Item2...'}
           />
-          <Text style={styles.h1}>Which meal?</Text>
+          <Text style={styles.h3}>Which meal?</Text>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>

@@ -17,6 +17,10 @@ export default StyleSheet.create({
     width: 100,
     height: 100,
   },
+  flex: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   flexRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -25,10 +29,22 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   h1: {
-    fontSize: 24,
+    fontSize: 20,
     color: '#4A4A4A',
     textAlign: 'center',
     fontFamily: 'Oswald Regular',
+  },
+  h2: {
+    fontSize: 22,
+    color: '#4A4A4A',
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  h3: {
+    fontSize: 20,
+    color: '#4A4A4A',
+    textAlign: 'center',
+    marginTop: 10,
   },
   formInput: {
     marginBottom: 5,
@@ -40,7 +56,7 @@ export default StyleSheet.create({
     borderColor: '#4A4A4A',
     backgroundColor: 'rgba(255,255,255,0.7)',
   },
-  btnStyle: {
+  btn: {
     color: '#FFF',
     backgroundColor: '#4A4A4A',
     padding: 5,
