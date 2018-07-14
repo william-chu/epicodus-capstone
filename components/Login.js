@@ -19,6 +19,9 @@ const compStyles = StyleSheet.create({
     fontWeight: 'bold',
     fontWeight: '400',
     letterSpacing: .2,
+    marginTop: -20,
+    marginBottom: -10,
+    fontSize: 16,
   },
   loginInput: {
    marginBottom: 5,

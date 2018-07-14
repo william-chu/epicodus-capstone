@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Font } from 'expo';
 
 // General App Styles
 export default StyleSheet.create({
@@ -24,9 +25,10 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   h1: {
-    fontSize: 20,
+    fontSize: 24,
     color: '#4A4A4A',
     textAlign: 'center',
+    fontFamily: 'Oswald Regular',
   },
   formInput: {
     marginBottom: 5,

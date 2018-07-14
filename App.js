@@ -4,7 +4,8 @@ import Home from './components/Home';
 import LogMeal from './components/LogMeal';
 import Track from './components/Track';
 import Analyze from './components/Analyze';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import styles from './components/styles';
 import { createStackNavigator } from 'react-navigation';
 import { Font } from 'expo';
 
@@ -43,12 +44,18 @@ const RootStack = createStackNavigator({
 );
 
 export default class App extends React.Component {
+  state = {
+    fontLoaded: false,
+  };
+
+  componentDidMount() {
+    Font.loadAsync({
+      'Oswald Regular': require('./assets/fonts/Oswald Regular.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
 
   render() {
     return <RootStack />;
   }
 }
-
-const styles = StyleSheet.create({
-
-});
