@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
   },
   mealBtn: {
     marginTop: 40,
+    width: 100,
+    height: 100,
   },
   footer: {
     marginBottom: 20,
@@ -30,8 +32,7 @@ export default class LogMeal extends React.Component {
         style={styles.gradient}>
         <View style={styles.container}>
           <Image source={mealBtn} style={styles.mealBtn} />
-
-            <Image source={footer} style={styles.footer} />
+          <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
     );

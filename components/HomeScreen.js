@@ -24,11 +24,16 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontSize: 20,
-    color: '#2B2B2B',
+    color: '#4A4A4A',
+    textAlign: 'center',
   },
   flex: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  actionBtn: {
+    width: 100,
+    height: 100,
   },
   mealBtn: {
     marginRight: 50,
@@ -49,14 +54,23 @@ export default class HomeScreen extends React.Component {
           <Text style={styles.h1}>Let's Get Started...</Text>
           <View style={styles.flex}>
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('LogMeal')} >
-              <Image source={mealBtn} style={styles.mealBtn} />
+              <View style={styles.mealBtn}>
+                <Image source={mealBtn} style={styles.actionBtn} />
+                <Text style={styles.h1}>Log Meal</Text>
+              </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Track')} >
-              <Image source={trackBtn} style={styles.trackBtn} />
+              <View>
+                <Image source={trackBtn} style={styles.actionBtn} />
+                <Text style={styles.h1}>Track BM</Text>
+              </View>
             </TouchableWithoutFeedback>
           </View>
           <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Analyze')} >
-            <Image source={analyzeBtn} style={styles.analyzeBtn} />
+            <View>
+              <Image source={analyzeBtn} style={styles.actionBtn} />
+              <Text style={styles.h1}>Analyze</Text>
+            </View>
           </TouchableWithoutFeedback>
             <Image source={footer} style={styles.footer} />
         </View>

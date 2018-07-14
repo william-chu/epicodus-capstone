@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
   },
   analyzeBtn: {
     marginTop: 40,
+    width: 100,
+    height: 100,
   },
   footer: {
     marginBottom: 20,
@@ -30,8 +32,7 @@ export default class Analyze extends React.Component {
         style={styles.gradient}>
         <View style={styles.container}>
           <Image source={analyzeBtn} style={styles.analyzeBtn} />
-
-            <Image source={footer} style={styles.footer} />
+          <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
     );
