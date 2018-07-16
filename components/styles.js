@@ -16,7 +16,10 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+    paddingTop: 40,
   },
   headerImage: {
     width: 80,
@@ -63,6 +66,11 @@ export default StyleSheet.create({
   btn: {
     color: '#FFF',
     backgroundColor: '#4A4A4A',
-    padding: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginTop: 10,
+    textAlign: 'center',
   }
 });

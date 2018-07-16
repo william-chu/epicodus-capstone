@@ -18,7 +18,7 @@ const compStyles = StyleSheet.create ({
   userImg: {
     width: 150,
     height: 150,
-    marginTop: 40,
+    marginTop: 20,
   },
   actionBtn: {
     width: 100,

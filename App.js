@@ -43,21 +43,37 @@ const RootStack = createStackNavigator({
   LogMeal: {
     screen: LogMeal,
     navigationOptions: {
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+      headerTransparent: true,
     }
   },
   Track: {
     screen: Track,
     navigationOptions: {
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+      headerTransparent: true,
     }
   },
   BristolScale: {
     screen: BristolScale,
     navigationOptions: {
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+      headerTransparent: true,
     }
   },
   Analyze: {
     screen: Analyze,
     navigationOptions: {
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+      headerTransparent: true,
     }
   },
 },
