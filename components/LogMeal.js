@@ -19,25 +19,35 @@ const compStyles = StyleSheet.create({
 });
 
 export default class LogMeal extends React.Component {
-  state = {
-    isDateTimePickerVisible: false,
-    selectedDate: new Date(),
-    selectedDateStr: 'Select Date',
-    meal: [
-      {
-        label: 'Breakfast',
-        value: '1',
-      },
-      {
-        label: 'Lunch',
-        value: '2',
-      },
-      {
-        label: 'Dinner',
-        value: '3',
-      },
-    ],
-  };
+
+  constructor(props) {
+    super(props);
+    this.defaultDate = new Date();
+    this.defaultDateStr = (this.defaultDate.getMonth() + 1).toString() +
+    '/' +
+    this.defaultDate.getDate().toString() +
+    '/' +
+    this.defaultDate.getFullYear().toString();
+    this.state = {
+      isDateTimePickerVisible: false,
+      selectedDate: this.defaultDate,
+      selectedDateStr: this.defaultDateStr,
+      meal: [
+        {
+          label: 'Breakfast',
+          value: '1',
+        },
+        {
+          label: 'Lunch',
+          value: '2',
+        },
+        {
+          label: 'Dinner',
+          value: '3',
+        },
+      ],
+    };
+  }
 
   // DateTimePicker Update State
   showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
@@ -54,7 +64,7 @@ export default class LogMeal extends React.Component {
     this.setState({ isDateTimePickerVisible: false, selectedDate: date });
     this.setSelectedDateStr(date);
   }
-  
+
   // Radio Button Update State
   onSetMeal = meal => this.setState({ meal });
 
