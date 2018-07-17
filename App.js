@@ -11,9 +11,12 @@ import { createStackNavigator } from 'react-navigation';
 import { Font } from 'expo';
 
 export default class App extends React.Component {
-  state = {
-    fontLoaded: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontLoaded: false,
+    };
+  }
 
   async componentDidMount() {
     await Font.loadAsync({
@@ -23,7 +26,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <RootStack />;
+    return this.state.fontLoaded && <RootStack />;
   }
 }
 

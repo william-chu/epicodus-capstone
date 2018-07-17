@@ -15,14 +15,17 @@ import loginBtn from '../assets/images/loginbtn.png';
 
 const compStyles = StyleSheet.create({
   loginSlogan: {
+    marginBottom: 10,
+  },
+  loginSloganText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
     fontWeight: '400',
     letterSpacing: .2,
-    marginTop: -20,
-    marginBottom: -10,
-    fontSize: 16,
-    // fontFamily: 'Oswald Regular',
+    fontSize: 18,
+    fontFamily: 'Oswald Regular',
+    textAlign: 'center',
+    alignSelf: 'center',
   },
   loginInput: {
    marginBottom: 5,
@@ -34,6 +37,8 @@ const compStyles = StyleSheet.create({
   },
   loginBtn: {
     marginBottom: 10,
+    width: 36,
+    height: 36,
   }
 });
 
@@ -49,22 +54,22 @@ export default class Login extends React.Component {
             resizeMode='contain'
             source={stomachImg}
           />
-          <Text style={compStyles.loginSlogan}>{`
-Discover your dietary triggers
-for better digestive health
-          `}</Text>
+          <View style={compStyles.loginSlogan}>
+            <Text style={compStyles.loginSloganText}>Discover Your Dietary Triggers</Text>
+            <Text style={compStyles.loginSloganText}>for Better Digestive Health</Text>
+          </View>
           <View>
             <TextInput
               style={compStyles.loginInput}
               editable={true}
               maxLength={40}
-              placeholder={'Username'}
+              placeholder={'username'}
             />
             <TextInput
               style={compStyles.loginInput}
               editable={true}
               maxLength={40}
-              placeholder={'Password'}
+              placeholder={'password'}
               secureTextEntry={true}
             />
           </View>
