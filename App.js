@@ -32,12 +32,20 @@ const RootStack = createStackNavigator({
     screen: Login,
     navigationOptions: {
       header: null,
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+      headerTransparent: true,
     }
   },
   Home: {
     screen: Home,
     navigationOptions: {
       header: null,
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+      headerTransparent: true,
     }
   },
   LogMeal: {
