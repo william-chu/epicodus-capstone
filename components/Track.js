@@ -18,7 +18,7 @@ const compStyles = StyleSheet.create({
 
 export default class Track extends React.Component {
   state = {
-    data: [
+    scale: [
       {
         label: '1',
         value: '1',
@@ -63,14 +63,31 @@ export default class Track extends React.Component {
         layout: 'column',
       },
     ],
+    time: [
+      {
+        label: 'Morning',
+        value: '1',
+      },
+      {
+        label: 'Afternoon',
+        value: '2',
+      },
+      {
+        label: 'Evening',
+        value: '3',
+      },
+    ],
   };
 
   // Radio Button Update State
-  onPress = data => this.setState({ data });
+  onSetScale = scale => this.setState({ scale });
+  onSetTime = time => this.setState({ time });
 
   render() {
-    let selectedButton = this.state.data.find(e => e.selected == true);
-    selectedButton = selectedButton ? selectedButton.value : this.state.data[0].label;
+    let selectedScale = this.state.scale.find(e => e.selected == true);
+    let selectedTime = this.state.time.find(e => e.selected == true);
+    selectedScale = selectedScale ? selectedScale.value : this.state.scale[0].label;
+    selectedTime = selectedTime ? selectedTime.value : this.state.time[0].label;
     return (
       <LinearGradient
         colors={['#B0A1F2', '#FFF', '#FFF']}
@@ -85,11 +102,17 @@ export default class Track extends React.Component {
             <TouchableOpacity onPress={() => this.props.navigation.navigate('BristolScale')}>
               <Text style={styles.btn}>SEE SCALE</Text>
             </TouchableOpacity>
+            <RadioGroup
+              radioButtons={this.state.scale}
+              onPress={this.onSetScale}
+              flexDirection='row'
+            />
           </View>
-          <RadioGroup
-            radioButtons={this.state.data}
-            onPress={this.onPress}
-            flexDirection='row' />
+          <View style={styles.flex}>
+            <Text style={styles.h3}>What time?</Text>
+            <RadioGroup radioButtons={this.state.time} onPress={this.onSetTime} />
+          </View>
+          <Text style={styles.btn}>SUBMIT</Text>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>

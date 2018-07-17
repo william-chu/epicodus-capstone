@@ -28,11 +28,12 @@ export default class BristolScale extends React.Component {
           <View style={styles.flex}>
             <Image source={trackBtn} style={styles.headerImage} />
             <Text style={styles.h1}>Bristol Scale</Text>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Track')}>
+              <Text style={styles.btn}>GO BACK</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Track')}>
-            <Text style={styles.btn}>GO BACK</Text>
-          </TouchableOpacity>
           <Image source={bristolScale} style={compStyles.chart}/>
+          <Image source={footer} style={styles.footer} />
          </View>
       </LinearGradient>
     );

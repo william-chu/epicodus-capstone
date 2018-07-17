@@ -40,6 +40,7 @@ export default StyleSheet.create({
     color: '#4A4A4A',
     textAlign: 'center',
     fontFamily: 'Oswald Regular',
+    marginBottom: 10,
   },
   h2: {
     fontSize: 22,
@@ -52,6 +53,7 @@ export default StyleSheet.create({
     color: '#4A4A4A',
     textAlign: 'center',
     marginTop: 10,
+    marginBottom: 10,
   },
   formInput: {
     marginBottom: 5,
@@ -70,7 +72,7 @@ export default StyleSheet.create({
     paddingBottom: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    marginTop: 10,
+    marginBottom: 10,
     textAlign: 'center',
   }
 });

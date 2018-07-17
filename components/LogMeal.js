@@ -18,7 +18,7 @@ const compStyles = StyleSheet.create({
 
 export default class LogMeal extends React.Component {
   state = {
-    data: [
+    meal: [
       {
         label: 'Breakfast',
         value: '1',
@@ -35,11 +35,11 @@ export default class LogMeal extends React.Component {
   };
 
   // Radio Button Update State
-  onPress = data => this.setState({ data });
+  onSetMeal = meal => this.setState({ meal });
 
   render() {
-    let selectedButton = this.state.data.find(e => e.selected == true);
-    selectedButton = selectedButton ? selectedButton.value : this.state.data[0].label;
+    let selectedButton = this.state.meal.find(e => e.selected == true);
+    selectedButton = selectedButton ? selectedButton.value : this.state.meal[0].label;
     return (
       <LinearGradient
         colors={['#B0A1F2', '#FFF', '#FFF']}
@@ -49,15 +49,20 @@ export default class LogMeal extends React.Component {
             <Image source={mealBtn} style={styles.headerImage} />
             <Text style={styles.h1}>Log Meal</Text>
           </View>
-          <Text style={styles.h3}>What did you eat?</Text>
-          <TextInput
-            style={styles.formInput}
-            editable={true}
-            maxLength={40}
-            placeholder={'Item1, Item2...'}
-          />
-          <Text style={styles.h3}>Which meal?</Text>
-          <RadioGroup radioButtons={this.state.data} onPress={this.onPress} />
+          <View style={styles.flex}>
+            <Text style={styles.h3}>What did you eat?</Text>
+            <TextInput
+              style={styles.formInput}
+              editable={true}
+              maxLength={40}
+              placeholder={'Item1, Item2...'}
+            />
+          </View>
+          <View style={styles.flex}>
+            <Text style={styles.h3}>Which meal?</Text>
+            <RadioGroup radioButtons={this.state.meal} onPress={this.onSetMeal} />
+          </View>
+          <Text style={styles.btn}>SUBMIT</Text>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
