@@ -16,9 +16,9 @@ Application analyzes ingredient data and returns possible dietary triggers based
 
 ## Setup/Instructions
 
-* Clone repository from https://github.com/william-chu/epicodus-capstone
+* Clone repository from https://github.com/william-chu/troublechute
 * Open project folder > Wireframes > TroubleChute.sketch to view wireframes
-* To view project, go to https://snack.expo.io/@william-chu/github.com-william-chu-epicodus-capstone
+* To view project, go to https://snack.expo.io/@william-chu/github.com-william-chu-troublechute
 
 ## Sketch Screenshots
 
@@ -42,7 +42,7 @@ Application analyzes ingredient data and returns possible dietary triggers based
 
 ## Media Attribution
 
-* Icons8.com - Cotton Icon Pack (fork and knife, pencil and log, microscope, fridge, chart, checkmark, warning sign, fire alarm)
+* Icons8.com - Cotton Icon Pack
 
 ## License
 
