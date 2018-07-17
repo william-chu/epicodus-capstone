@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import RadioGroup from 'react-native-radio-buttons-group';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 import styles from './styles';
 import trackBtn from '../assets/images/trackbtn.png';
 import footer from '../assets/images/footer.png';
@@ -17,67 +18,95 @@ const compStyles = StyleSheet.create({
 });
 
 export default class Track extends React.Component {
-  state = {
-    scale: [
-      {
-        label: '1',
-        value: '1',
-        color: '#FF7A8C',
-        layout: 'column',
-      },
-      {
-        label: '2',
-        value: '2',
-        color: '#F7E289',
-        layout: 'column',
-      },
-      {
-        label: '3',
-        value: '3',
-        color: '#9ED8C5',
-        layout: 'column',
-      },
-      {
-        label: '4',
-        value: '4',
-        color: '#9ED8C5',
-        layout: 'column',
-        selected: true,
-      },
-      {
-        label: '5',
-        value: '5',
-        color: '#F7E289',
-        layout: 'column',
-      },
-      {
-        label: '6',
-        value: '6',
-        color: '#F7E289',
-        layout: 'column',
-      },
-      {
-        label: '7',
-        value: '7',
-        color: '#FF7A8C',
-        layout: 'column',
-      },
-    ],
-    time: [
-      {
-        label: 'Morning',
-        value: '1',
-      },
-      {
-        label: 'Afternoon',
-        value: '2',
-      },
-      {
-        label: 'Evening',
-        value: '3',
-      },
-    ],
-  };
+  constructor(props) {
+    super(props);
+    this.defaultDate = new Date();
+    this.defaultDateStr = (this.defaultDate.getMonth() + 1).toString() +
+    '/' +
+    this.defaultDate.getDate().toString() +
+    '/' +
+    this.defaultDate.getFullYear().toString();
+    this.state = {
+      isDateTimePickerVisible: false,
+      selectedDate: this.defaultDate,
+      selectedDateStr: this.defaultDateStr,
+      scale: [
+        {
+          label: '1',
+          value: '1',
+          color: '#FF7A8C',
+          layout: 'column',
+        },
+        {
+          label: '2',
+          value: '2',
+          color: '#F7E289',
+          layout: 'column',
+        },
+        {
+          label: '3',
+          value: '3',
+          color: '#9ED8C5',
+          layout: 'column',
+        },
+        {
+          label: '4',
+          value: '4',
+          color: '#9ED8C5',
+          layout: 'column',
+          selected: true,
+        },
+        {
+          label: '5',
+          value: '5',
+          color: '#F7E289',
+          layout: 'column',
+        },
+        {
+          label: '6',
+          value: '6',
+          color: '#F7E289',
+          layout: 'column',
+        },
+        {
+          label: '7',
+          value: '7',
+          color: '#FF7A8C',
+          layout: 'column',
+        },
+      ],
+      time: [
+        {
+          label: 'Morning',
+          value: '1',
+        },
+        {
+          label: 'Afternoon',
+          value: '2',
+        },
+        {
+          label: 'Evening',
+          value: '3',
+        },
+      ],
+    };
+  }
+
+  // DateTimePicker Update State
+  showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+  hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+  setSelectedDateStr = (date) => {
+    let newSelectedDateStr = (date.getMonth() + 1).toString() +
+    '/' +
+    date.getDate().toString() +
+    '/' +
+    date.getFullYear().toString();
+    this.setState({ selectedDateStr: newSelectedDateStr });
+  }
+  handleDatePicked = (date) => {
+    this.setState({ isDateTimePickerVisible: false, selectedDate: date });
+    this.setSelectedDateStr(date);
+  }
 
   // Radio Button Update State
   onSetScale = scale => this.setState({ scale });
@@ -97,6 +126,19 @@ export default class Track extends React.Component {
             <Image source={trackBtn} style={styles.headerImage} />
             <Text style={styles.h1}>Track BM</Text>
           </View>
+          {/* DateTimePicker Begin */}
+          <View >
+            <Text style={styles.h3}>{this.state.selectedDateStr}</Text>
+            <TouchableOpacity onPress={this.showDateTimePicker}>
+              <Text style={styles.btn}>CHANGE</Text>
+            </TouchableOpacity>
+            <DateTimePicker
+              isVisible={this.state.isDateTimePickerVisible}
+              onConfirm={this.handleDatePicked}
+              onCancel={this.hideDateTimePicker}
+            />
+          </View>
+          {/* DateTimePicker End */}
           <View style={styles.flex}>
             <Text style={styles.h3}>Where on the scale?</Text>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('BristolScale')}>
