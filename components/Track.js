@@ -79,14 +79,17 @@ export default class Track extends React.Component {
         {
           label: 'Morning',
           value: '1',
+          size: 20,
         },
         {
           label: 'Afternoon',
           value: '2',
+          size: 20,
         },
         {
           label: 'Evening',
           value: '3',
+          size: 20,
         },
       ],
     };
@@ -127,10 +130,10 @@ export default class Track extends React.Component {
             <Text style={styles.h1}>Track BM</Text>
           </View>
           {/* DateTimePicker Begin */}
-          <View >
+          <View>
             <Text style={styles.h3}>{this.state.selectedDateStr}</Text>
             <TouchableOpacity onPress={this.showDateTimePicker}>
-              <Text style={styles.btn}>CHANGE</Text>
+              <Text style={styles.btn}>SET DATE</Text>
             </TouchableOpacity>
             <DateTimePicker
               isVisible={this.state.isDateTimePickerVisible}
@@ -154,7 +157,7 @@ export default class Track extends React.Component {
             <Text style={styles.h3}>What time?</Text>
             <RadioGroup radioButtons={this.state.time} onPress={this.onSetTime} />
           </View>
-          <Text style={styles.btn}>SUBMIT</Text>
+          <Text style={styles.btnPurple}>SUBMIT</Text>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>

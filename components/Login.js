@@ -30,11 +30,9 @@ const compStyles = StyleSheet.create({
    width: 200,
    padding: 5,
    borderRadius: 5,
-   backgroundColor: 'rgba(255,255,255,0.7)',
+   backgroundColor: 'rgba(255,255,255,0.8)',
   },
   loginBtn: {
-    backgroundColor: 'rgba(255,255,255,0.7)',
-    borderRadius: 20,
     marginBottom: 10,
   }
 });
@@ -47,7 +45,8 @@ export default class Login extends React.Component {
         style={styles.gradient}>
         <View style={styles.containerFluid}>
           <Image
-            resizeMode={'cover'}
+            style={{flex:1}}
+            resizeMode='contain'
             source={stomachImg}
           />
           <Text style={compStyles.loginSlogan}>{`

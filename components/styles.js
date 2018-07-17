@@ -49,7 +49,7 @@ export default StyleSheet.create({
     marginTop: 10,
   },
   h3: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#4A4A4A',
     textAlign: 'center',
     marginTop: 10,
@@ -67,12 +67,29 @@ export default StyleSheet.create({
   },
   btn: {
     color: '#FFF',
+    fontSize: 12,
     backgroundColor: '#4A4A4A',
+    paddingTop: 3,
+    paddingBottom: 3,
+    paddingLeft: 5,
+    paddingRight: 5,
+    marginBottom: 10,
+    textAlign: 'center',
+    overflow: 'hidden',
+    borderRadius: 5,
+    alignSelf: 'center',
+  },
+  btnPurple: {
+    color: '#FFF',
+    backgroundColor: '#6F62AB',
     paddingTop: 5,
     paddingBottom: 5,
     paddingLeft: 10,
     paddingRight: 10,
     marginBottom: 10,
     textAlign: 'center',
+    overflow: 'hidden',
+    borderRadius: 5,
+    alignSelf: 'center',
   }
 });

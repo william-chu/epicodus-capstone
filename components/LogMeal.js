@@ -36,14 +36,17 @@ export default class LogMeal extends React.Component {
         {
           label: 'Breakfast',
           value: '1',
+          size: 20,
         },
         {
           label: 'Lunch',
           value: '2',
+          size: 20,
         },
         {
           label: 'Dinner',
           value: '3',
+          size: 20,
         },
       ],
     };
@@ -85,10 +88,10 @@ export default class LogMeal extends React.Component {
             <Text style={styles.h1}>Log Meal</Text>
           </View>
           {/* DateTimePicker Begin */}
-          <View >
+          <View>
             <Text style={styles.h3}>{this.state.selectedDateStr}</Text>
             <TouchableOpacity onPress={this.showDateTimePicker}>
-              <Text style={styles.btn}>CHANGE</Text>
+              <Text style={styles.btn}>SET DATE</Text>
             </TouchableOpacity>
             <DateTimePicker
               isVisible={this.state.isDateTimePickerVisible}
@@ -110,7 +113,7 @@ export default class LogMeal extends React.Component {
             <Text style={styles.h3}>Which meal?</Text>
             <RadioGroup radioButtons={this.state.meal} onPress={this.onSetMeal} />
           </View>
-          <Text style={styles.btn}>SUBMIT</Text>
+          <Text style={styles.btnPurple}>SUBMIT</Text>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
