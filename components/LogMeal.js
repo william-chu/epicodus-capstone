@@ -22,6 +22,7 @@ export default class LogMeal extends React.Component {
   state = {
     isDateTimePickerVisible: false,
     selectedDate: new Date(),
+    selectedDateStr: 'Select Date',
     meal: [
       {
         label: 'Breakfast',
@@ -39,21 +40,27 @@ export default class LogMeal extends React.Component {
   };
 
   // DateTimePicker Update State
-  selectedDateStr = (this.state.selectedDate.getMonth() + 1).toString() +
-                    '/' +
-                    this.state.selectedDate.getDate().toString() +
-                    '/' +
-                    this.state.selectedDate.getFullYear().toString();
-
   showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
   hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+  setSelectedDateStr = (date) => {
+    let newSelectedDateStr = (date.getMonth() + 1).toString() +
+    '/' +
+    date.getDate().toString() +
+    '/' +
+    date.getFullYear().toString();
+    this.setState({ selectedDateStr: newSelectedDateStr });
+  }
   handleDatePicked = (date) => {
-    this.setState({ selectedDate: new Date(`${date}`) })
-    this.hideDateTimePicker();
-  };
-
+    this.setState({ isDateTimePickerVisible: false, selectedDate: date });
+    this.setSelectedDateStr(date);
+  }
+  
   // Radio Button Update State
   onSetMeal = meal => this.setState({ meal });
+
+  onComponentWillMount() {
+    this.setSelectedDateStr();
+  }
 
   render() {
     let selectedMeal = this.state.meal.find(e => e.selected == true);
@@ -69,7 +76,7 @@ export default class LogMeal extends React.Component {
           </View>
           {/* DateTimePicker Begin */}
           <View >
-            <Text style={styles.h3}>{this.selectedDateStr}</Text>
+            <Text style={styles.h3}>{this.state.selectedDateStr}</Text>
             <TouchableOpacity onPress={this.showDateTimePicker}>
               <Text style={styles.btn}>CHANGE</Text>
             </TouchableOpacity>
