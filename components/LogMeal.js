@@ -51,7 +51,6 @@ export default class LogMeal extends React.Component {
       ],
     };
   }
-
   // DateTimePicker Update State
   showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
   hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
@@ -67,9 +66,13 @@ export default class LogMeal extends React.Component {
     this.setState({ isDateTimePickerVisible: false, selectedDate: date });
     this.setSelectedDateStr(date);
   }
-
   // Radio Button Update State
   onSetMeal = meal => this.setState({ meal });
+
+  handleLogMealSubmitPress = () => {
+    let onLogMealSubmit = this.props.navigation.getParam('onLogMealSubmit');
+    onLogMealSubmit();
+  }
 
   onComponentWillMount() {
     this.setSelectedDateStr();
@@ -112,9 +115,12 @@ export default class LogMeal extends React.Component {
           </View>
           <View style={styles.flex}>
             <Text style={styles.h3}>Which meal?</Text>
-            <RadioGroup radioButtons={this.state.meal} onPress={this.onSetMeal} />
+            <RadioGroup
+              radioButtons={this.state.meal}
+              onPress={this.onSetMeal} />
           </View>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('LogMealSubmit')} >
+          <TouchableOpacity onPress={() => { this.handleLogMealSubmitPress(),
+            this.props.navigation.navigate('LogMealSubmit') }} >
             <Text style={styles.btnPurple}>SUBMIT</Text>
           </TouchableOpacity>
           <Image source={footer} style={styles.footer} />

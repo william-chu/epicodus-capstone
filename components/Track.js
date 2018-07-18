@@ -97,7 +97,6 @@ export default class Track extends React.Component {
       ],
     };
   }
-
   // DateTimePicker Update State
   showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
   hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
@@ -113,7 +112,6 @@ export default class Track extends React.Component {
     this.setState({ isDateTimePickerVisible: false, selectedDate: date });
     this.setSelectedDateStr(date);
   }
-
   // Radio Button Update State
   onSetScale = scale => this.setState({ scale });
   onSetSelectedScaleInput = scaleInput => {
@@ -121,6 +119,11 @@ export default class Track extends React.Component {
     this.setState({selectedScaleInput: newSelectedScaleInput});
   };
   onSetTime = time => this.setState({ time });
+
+  handleTrackSubmitPress = () => {
+    let onTrackSubmit = this.props.navigation.getParam('onTrackSubmit');
+    onTrackSubmit();
+  }
 
   render() {
     let selectedScale;
@@ -168,7 +171,8 @@ export default class Track extends React.Component {
             <Text style={styles.h3}>What time?</Text>
             <RadioGroup radioButtons={this.state.time} onPress={this.onSetTime} />
           </View>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('TrackSubmit', { scaleInput: this.state.selectedScaleInput })}>
+          <TouchableOpacity onPress={() => { this.handleTrackSubmitPress(),
+            this.props.navigation.navigate('TrackSubmit', { scaleInput: this.state.selectedScaleInput })}} >
             <Text style={styles.btnPurple}>SUBMIT</Text>
           </TouchableOpacity>
           <Image source={footer} style={styles.footer} />
