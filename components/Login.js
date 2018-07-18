@@ -61,12 +61,14 @@ export default class Login extends React.Component {
           <View>
             <TextInput
               style={compStyles.loginInput}
+              underlineColorAndroid='transparent'
               editable={true}
               maxLength={40}
               placeholder={'username'}
             />
             <TextInput
               style={compStyles.loginInput}
+              underlineColorAndroid='transparent'
               editable={true}
               maxLength={40}
               placeholder={'password'}

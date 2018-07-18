@@ -91,7 +91,7 @@ export default class LogMeal extends React.Component {
           <View>
             <Text style={styles.h3}>{this.state.selectedDateStr}</Text>
             <TouchableOpacity onPress={this.showDateTimePicker}>
-              <Text style={styles.btn}>SET DATE</Text>
+              <Text style={styles.btn}>CHANGE DATE</Text>
             </TouchableOpacity>
             <DateTimePicker
               isVisible={this.state.isDateTimePickerVisible}
@@ -104,6 +104,7 @@ export default class LogMeal extends React.Component {
             <Text style={styles.h3}>What did you eat?</Text>
             <TextInput
               style={styles.formInput}
+              underlineColorAndroid='transparent'
               editable={true}
               maxLength={40}
               placeholder={'Item1, Item2...'}

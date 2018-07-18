@@ -14,7 +14,9 @@ import trackBtn from '../assets/images/trackbtn.png';
 import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
-
+  radioGroupBtn: {
+    marginTop: 10,
+  },
 });
 
 export default class Track extends React.Component {
@@ -133,7 +135,7 @@ export default class Track extends React.Component {
           <View>
             <Text style={styles.h3}>{this.state.selectedDateStr}</Text>
             <TouchableOpacity onPress={this.showDateTimePicker}>
-              <Text style={styles.btn}>SET DATE</Text>
+              <Text style={styles.btn}>CHANGE DATE</Text>
             </TouchableOpacity>
             <DateTimePicker
               isVisible={this.state.isDateTimePickerVisible}
@@ -144,14 +146,14 @@ export default class Track extends React.Component {
           {/* DateTimePicker End */}
           <View style={styles.flex}>
             <Text style={styles.h3}>Where on the scale?</Text>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('BristolScale')}>
-              <Text style={styles.btn}>SEE SCALE</Text>
-            </TouchableOpacity>
             <RadioGroup
               radioButtons={this.state.scale}
               onPress={this.onSetScale}
               flexDirection='row'
             />
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('BristolScale')}>
+              <Text style={[styles.btn, compStyles.radioGroupBtn]}>SEE SCALE</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.flex}>
             <Text style={styles.h3}>What time?</Text>
