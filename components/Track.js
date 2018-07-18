@@ -32,6 +32,7 @@ export default class Track extends React.Component {
       isDateTimePickerVisible: false,
       selectedDate: this.defaultDate,
       selectedDateStr: this.defaultDateStr,
+      selectedScaleInput: 4,
       scale: [
         {
           label: '1',
@@ -115,12 +116,16 @@ export default class Track extends React.Component {
 
   // Radio Button Update State
   onSetScale = scale => this.setState({ scale });
+  onSetSelectedScaleInput = scaleInput => {
+    console.log(scaleInput + "inside onsetselscale");
+    let newSelectedScaleInput = parseInt(scaleInput);
+    this.setState({selectedScaleInput: newSelectedScaleInput});
+  };
   onSetTime = time => this.setState({ time });
 
   render() {
-    let selectedScale = this.state.scale.find(e => e.selected == true);
+    let selectedScale;
     let selectedTime = this.state.time.find(e => e.selected == true);
-    selectedScale = selectedScale ? selectedScale.value : this.state.scale[0].label;
     selectedTime = selectedTime ? selectedTime.value : this.state.time[0].label;
     return (
       <LinearGradient
@@ -148,7 +153,12 @@ export default class Track extends React.Component {
             <Text style={styles.h3}>Where on the scale?</Text>
             <RadioGroup
               radioButtons={this.state.scale}
-              onPress={this.onSetScale}
+              onPress={() => {
+                this.onSetScale,
+                selectedScale = this.state.scale.find(e => e.selected == true),
+                selectedScale = selectedScale ? selectedScale.value : this.state.scale[0].label,
+                this.onSetSelectedScaleInput(selectedScale)
+              }}
               flexDirection='row'
             />
             <TouchableOpacity onPress={() => this.props.navigation.navigate('BristolScale')}>
@@ -159,7 +169,7 @@ export default class Track extends React.Component {
             <Text style={styles.h3}>What time?</Text>
             <RadioGroup radioButtons={this.state.time} onPress={this.onSetTime} />
           </View>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('TrackSubmit')}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('TrackSubmit', { scaleInput: this.state.selectedScaleInput })}>
             <Text style={styles.btnPurple}>SUBMIT</Text>
           </TouchableOpacity>
           <Image source={footer} style={styles.footer} />

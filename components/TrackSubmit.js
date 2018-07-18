@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import styles from './styles';
-import mealBtn from '../assets/images/mealbtn.png';
+import goodResult from '../assets/images/goodresult.png';
+import okayResult from '../assets/images/okayresult.png';
+import badResult from '../assets/images/badresult.png';
 import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
@@ -18,13 +20,23 @@ const compStyles = StyleSheet.create({
 });
 
 export default function TrackSubmit(props) {
+  let scaleInput = props.navigation.getParam('scaleInput');
+  let resultImage;
+  if (scaleInput === 1 || scaleInput === 7) {
+    resultImage = badResult;
+  } else if (scaleInput === 3 || scaleInput === 4) {
+    resultImage = goodResult;
+  } else {
+    resultImage = okayResult;
+  }
+
   return (
     <LinearGradient
       colors={['#B0A1F2', '#FFF', '#FFF']}
       style={styles.gradient}>
       <View style={styles.container}>
         <View style={styles.flex}>
-          <Image source={mealBtn} style={styles.headerImage} />
+          <Image source={resultImage} style={styles.headerImage} />
           <Text style={styles.h1}>Track Submit Text</Text>
           <TouchableOpacity onPress={() => props.navigation.navigate('Home')} >
             <Text style={styles.btn}>GO BACK</Text>
