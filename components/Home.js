@@ -29,7 +29,13 @@ const compStyles = StyleSheet.create ({
   },
 });
 
-export default class HomeScreen extends React.Component {
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
   render() {
     return (
       <LinearGradient

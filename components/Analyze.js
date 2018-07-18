@@ -15,7 +15,7 @@ const compStyles = StyleSheet.create({
 
 });
 
-export default function Analyze (props) {
+export default function Analyze(props) {
   return (
     <LinearGradient
       colors={['#B0A1F2', '#FFF', '#FFF']}
