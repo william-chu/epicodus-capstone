@@ -35,18 +35,26 @@ export default StyleSheet.create({
   },
   footer: {
   },
+  textLeft: {
+    textAlign: 'left',
+  },
+  redText: {
+    color: 'red'
+  },
   h1: {
     fontSize: 20,
     color: '#4A4A4A',
     textAlign: 'center',
     fontFamily: 'Oswald Regular',
     marginBottom: 10,
+    alignSelf: 'center',
   },
   h2: {
     fontSize: 22,
     color: '#4A4A4A',
     textAlign: 'center',
     marginTop: 10,
+    alignSelf: 'center',
   },
   h3: {
     fontSize: 18,
@@ -54,6 +62,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
     marginBottom: 10,
+    alignSelf: 'center',
   },
   formInput: {
     marginBottom: 5,
