@@ -42,44 +42,42 @@ const compStyles = StyleSheet.create({
   }
 });
 
-export default class Login extends React.Component {
-  render() {
-    return (
-      <LinearGradient
-        colors={['#B0A1F2', '#6F62AB']}
-        style={styles.gradient}>
-        <View style={styles.containerFluid}>
-          <Image
-            style={{flex:1}}
-            resizeMode='contain'
-            source={stomachImg}
-          />
-          <View style={compStyles.loginSlogan}>
-            <Text style={compStyles.loginSloganText}>Discover Your Dietary Triggers</Text>
-            <Text style={compStyles.loginSloganText}>for Better Digestive Health</Text>
-          </View>
-          <View>
-            <TextInput
-              style={compStyles.loginInput}
-              underlineColorAndroid='transparent'
-              editable={true}
-              maxLength={40}
-              placeholder={'username'}
-            />
-            <TextInput
-              style={compStyles.loginInput}
-              underlineColorAndroid='transparent'
-              editable={true}
-              maxLength={40}
-              placeholder={'password'}
-              secureTextEntry={true}
-            />
-          </View>
-          <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')} >
-            <Image source={loginBtn} style={compStyles.loginBtn} />
-          </TouchableWithoutFeedback>
+export default function Login(props) {
+  return (
+    <LinearGradient
+      colors={['#B0A1F2', '#6F62AB']}
+      style={styles.gradient}>
+      <View style={styles.containerFluid}>
+        <Image
+          style={{flex:1}}
+          resizeMode='contain'
+          source={stomachImg}
+        />
+        <View style={compStyles.loginSlogan}>
+          <Text style={compStyles.loginSloganText}>Discover Your Dietary Triggers</Text>
+          <Text style={compStyles.loginSloganText}>for Better Digestive Health</Text>
         </View>
-      </LinearGradient>
-    );
-  }
+        <View>
+          <TextInput
+            style={compStyles.loginInput}
+            underlineColorAndroid='transparent'
+            editable={true}
+            maxLength={40}
+            placeholder={'username'}
+          />
+          <TextInput
+            style={compStyles.loginInput}
+            underlineColorAndroid='transparent'
+            editable={true}
+            maxLength={40}
+            placeholder={'password'}
+            secureTextEntry={true}
+          />
+        </View>
+        <TouchableWithoutFeedback onPress={() => props.navigation.navigate('Home')} >
+          <Image source={loginBtn} style={compStyles.loginBtn} />
+        </TouchableWithoutFeedback>
+      </View>
+    </LinearGradient>
+  );
 }

@@ -3,6 +3,7 @@ import {
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { LinearGradient } from 'expo';
@@ -14,22 +15,23 @@ const compStyles = StyleSheet.create({
 
 });
 
-export default class Analyze extends React.Component {
-  render() {
-    return (
-      <LinearGradient
-        colors={['#B0A1F2', '#FFF', '#FFF']}
-        style={styles.gradient}>
-        <View style={styles.container}>
-          <View style={styles.flex}>
-            <Image source={analyzeBtn} style={styles.headerImage} />
-            <Text style={styles.h1}>Our Analysis</Text>
-          </View>
-          <Text>These are the logged meals that correlated with you not feeling well in the last 30 days.</Text>
-          <Text>Possible dietary triggers:</Text>
-          <Image source={footer} style={styles.footer} />
+export default function Analyze (props) {
+  return (
+    <LinearGradient
+      colors={['#B0A1F2', '#FFF', '#FFF']}
+      style={styles.gradient}>
+      <View style={styles.container}>
+        <View style={styles.flex}>
+          <Image source={analyzeBtn} style={styles.headerImage} />
+          <Text style={styles.h1}>Our Analysis</Text>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Home')} >
+            <Text style={styles.btn}>GO BACK</Text>
+          </TouchableOpacity>
         </View>
-      </LinearGradient>
-    );
-  }
+        <Text>These are the logged meals that correlated with you not feeling well in the last 30 days.</Text>
+        <Text>Possible dietary triggers:</Text>
+        <Image source={footer} style={styles.footer} />
+      </View>
+    </LinearGradient>
+  );
 }

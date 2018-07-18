@@ -117,7 +117,6 @@ export default class Track extends React.Component {
   // Radio Button Update State
   onSetScale = scale => this.setState({ scale });
   onSetSelectedScaleInput = scaleInput => {
-    console.log(scaleInput + "inside onsetselscale");
     let newSelectedScaleInput = parseInt(scaleInput);
     this.setState({selectedScaleInput: newSelectedScaleInput});
   };
