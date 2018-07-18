@@ -4,6 +4,7 @@ import Home from './components/Home';
 import LogMeal from './components/LogMeal';
 import LogMealSubmit from './components/LogMealSubmit';
 import Track from './components/Track';
+import TrackSubmit from './components/TrackSubmit';
 import BristolScale from './components/BristolScale';
 import Analyze from './components/Analyze';
 import { Text, View } from 'react-native';
@@ -74,6 +75,16 @@ const RootStack = createStackNavigator({
   Track: {
     screen: Track,
     navigationOptions: {
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+      headerTransparent: true,
+    }
+  },
+  TrackSubmit: {
+    screen: TrackSubmit,
+    navigationOptions: {
+      header: null,
       headerStyle: {
         borderBottomWidth: 0,
       },

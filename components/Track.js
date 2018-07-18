@@ -159,7 +159,9 @@ export default class Track extends React.Component {
             <Text style={styles.h3}>What time?</Text>
             <RadioGroup radioButtons={this.state.time} onPress={this.onSetTime} />
           </View>
-          <Text style={styles.btnPurple}>SUBMIT</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('TrackSubmit')}>
+            <Text style={styles.btnPurple}>SUBMIT</Text>
+          </TouchableOpacity>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
