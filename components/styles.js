@@ -58,7 +58,7 @@ export default StyleSheet.create({
   formInput: {
     marginBottom: 5,
     height: 25,
-    width: 200,
+    width: 250,
     padding: 5,
     borderRadius: 5,
     borderWidth: .5,

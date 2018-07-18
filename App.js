@@ -2,6 +2,7 @@ import React from 'react';
 import Login from './components/Login';
 import Home from './components/Home';
 import LogMeal from './components/LogMeal';
+import LogMealSubmit from './components/LogMealSubmit';
 import Track from './components/Track';
 import BristolScale from './components/BristolScale';
 import Analyze from './components/Analyze';
@@ -54,6 +55,16 @@ const RootStack = createStackNavigator({
   LogMeal: {
     screen: LogMeal,
     navigationOptions: {
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+      headerTransparent: true,
+    }
+  },
+  LogMealSubmit: {
+    screen: LogMealSubmit,
+    navigationOptions: {
+      header: null,
       headerStyle: {
         borderBottomWidth: 0,
       },

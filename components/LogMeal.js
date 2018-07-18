@@ -114,7 +114,9 @@ export default class LogMeal extends React.Component {
             <Text style={styles.h3}>Which meal?</Text>
             <RadioGroup radioButtons={this.state.meal} onPress={this.onSetMeal} />
           </View>
-          <Text style={styles.btnPurple}>SUBMIT</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('LogMealSubmit')} >
+            <Text style={styles.btnPurple}>SUBMIT</Text>
+          </TouchableOpacity>
           <Image source={footer} style={styles.footer} />
         </View>
       </LinearGradient>
