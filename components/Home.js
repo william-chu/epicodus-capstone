@@ -36,8 +36,11 @@ export default class Home extends React.Component {
     };
   }
 
-  handleLogMealSubmit = () => {
+  handleLogMealSubmit = (date, mealArr, meal) => {
     console.log('handleLogMealSubmit fired');
+    console.log(date);
+    console.log(mealArr);
+    console.log(meal);
   }
   handleTrackSubmit = () => {
     console.log('handleTrackSubmit fired');

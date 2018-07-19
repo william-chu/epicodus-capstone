@@ -32,20 +32,22 @@ export default class LogMeal extends React.Component {
       isDateTimePickerVisible: false,
       selectedDate: this.defaultDate,
       selectedDateStr: this.defaultDateStr,
+      mealInputArr: [],
+      selectedMealInput: 'Breakfast',
       meal: [
         {
           label: 'Breakfast',
-          value: '1',
+          value: 'Breakfast',
           size: 20,
         },
         {
           label: 'Lunch',
-          value: '2',
+          value: 'Lunch',
           size: 20,
         },
         {
           label: 'Dinner',
-          value: '3',
+          value: 'Dinner',
           size: 20,
         },
       ],
@@ -68,10 +70,19 @@ export default class LogMeal extends React.Component {
   }
   // Radio Button Update State
   onSetMeal = meal => this.setState({ meal });
+  onSetSelectedMealInput = mealInput => {
+    this.setState({selectedMealInput: mealInput});
+    console.log(this.state.selectedMealInput);
+  }
 
   handleLogMealSubmitPress = () => {
     let onLogMealSubmit = this.props.navigation.getParam('onLogMealSubmit');
-    onLogMealSubmit();
+    onLogMealSubmit(this.state.selectedDate, this.state.mealInputArr, this.state.selectedMealInput);
+  }
+
+  handleMealInputToArr = (text) => {
+    let newMealInputArr = text.split(',');
+    this.setState({ mealInputArr: newMealInputArr });
   }
 
   onComponentWillMount() {
@@ -79,8 +90,7 @@ export default class LogMeal extends React.Component {
   }
 
   render() {
-    let selectedMeal = this.state.meal.find(e => e.selected == true);
-    selectedMeal = selectedMeal ? selectedMeal.value : this.state.meal[0].label;
+    let selectedMeal;
     return (
       <LinearGradient
         colors={['#B0A1F2', '#FFF', '#FFF']}
@@ -111,13 +121,18 @@ export default class LogMeal extends React.Component {
               editable={true}
               maxLength={40}
               placeholder={'Item1, Item2...'}
+              onChangeText={(text) => this.handleMealInputToArr(text)}
             />
           </View>
           <View style={styles.flex}>
             <Text style={styles.h3}>Which meal?</Text>
             <RadioGroup
               radioButtons={this.state.meal}
-              onPress={this.onSetMeal} />
+              onPress={() => {
+                this.onSetMeal,
+                selectedMeal = this.state.meal.find(e => e.selected == true),
+                selectedMeal = selectedMeal ? selectedMeal.value : this.state.meal[0].label,
+                this.onSetSelectedMealInput(selectedMeal)}} />
           </View>
           <TouchableOpacity onPress={() => { this.handleLogMealSubmitPress(),
             this.props.navigation.navigate('LogMealSubmit') }} >

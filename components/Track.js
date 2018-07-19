@@ -171,7 +171,8 @@ export default class Track extends React.Component {
             <Text style={styles.h3}>What time?</Text>
             <RadioGroup radioButtons={this.state.time} onPress={this.onSetTime} />
           </View>
-          <TouchableOpacity onPress={() => { this.handleTrackSubmitPress(),
+          <TouchableOpacity onPress={() => {
+            this.handleTrackSubmitPress(),
             this.props.navigation.navigate('TrackSubmit', { scaleInput: this.state.selectedScaleInput })}} >
             <Text style={styles.btnPurple}>SUBMIT</Text>
           </TouchableOpacity>
