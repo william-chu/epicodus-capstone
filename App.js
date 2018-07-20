@@ -17,7 +17,11 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       fontLoaded: false,
-      masterMealLog: {},
+      masterMealLog: {
+        20180717: {
+          'breakfast': 'cinnamon raison bread',
+        },
+      },
     };
   }
 
@@ -29,14 +33,33 @@ export default class App extends React.Component {
   }
 
   handleLogMealSubmit = (date, mealArr, meal) => {
-    let newMealLogObjKey =
-      date.getFullYear().toString() +
-      (date.getMonth() + 1).toString() +
-      date.getDate().toString();
-    let newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
-      [newMealLogObjKey]: meal, mealArr
-    });
-    this.setState({ masterMealLog: newMasterMealLog });
+    let dateNum = date.getDate();
+    let monthNum = (date.getMonth() + 1);
+    let dateStr;
+    let monthStr;
+    if (dateNum > 9) {
+      dateStr = dateNum.toString();
+    } else {
+      dateStr = '0' + dateNum.toString();
+    }
+    if (monthNum > 9) {
+      monthStr = monthNum.toString();
+    } else {
+      monthStr = '0' + monthNum.toString();
+    }
+    let newMealLogDateKey =
+    date.getFullYear().toString() +
+    monthStr +
+    dateStr;
+    
+      console.log(newMealLogDateKey);
+      console.log(this.state.masterMealLog[newMealLogDateKey]);
+    // if (this.state.masterMealLog.newMealLogDateKey === undefined) {
+    //   let newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
+    //     [newMealLogDateKey]: {[meal]: mealArr}
+    //   });
+    // }
+    // this.setState({ masterMealLog: newMasterMealLog });
   }
   handleTrackSubmit = () => {
     console.log('handleTrackSubmit fired');
