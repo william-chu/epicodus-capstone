@@ -27,7 +27,7 @@ export default function TrackSubmit(props) {
   if (scaleInput === 1 || scaleInput === 7) {
     resultImage = badResult;
     resultHeader = 'Sound the Alarm';
-    resultText = <Text>When you report 1 or 7 your symptoms are severe. Here are the meals you ate in the last 12 - 24 hours.</Text>;
+    resultText = <Text>When you report 1 or 7 your symptoms are severe. Here are the meals you ate in the last 30-40 hours.</Text>;
     specialText = <Text style={styles.redText}>If your issues persist, please seek professional medical attention.</Text>
   } else if (scaleInput === 3 || scaleInput === 4) {
     resultImage = goodResult;
@@ -38,7 +38,7 @@ export default function TrackSubmit(props) {
   } else {
     resultImage = okayResult;
     resultHeader = 'Room to Improve';
-    resultText = <Text>When you report 2, 5 or 6 your symptoms are moderate. Here are the meals you ate in the last 12 - 24 hours.</Text>;
+    resultText = <Text>When you report 2, 5 or 6 your symptoms are moderate. Here are the meals you ate in the last 30 - 40 hours.</Text>;
   }
 
   return (

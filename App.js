@@ -18,8 +18,15 @@ export default class App extends React.Component {
     this.state = {
       fontLoaded: false,
       masterMealLog: {
+        20180718: {
+          'Breakfast': ['cinnamon raisin bread', 'milk'],
+          'Lunch': ['lasagna', 'caesar salad'],
+          'Dinner': ['chicken burrito', 'chips and salsa'],
+        },
         20180719: {
-          'Breakfast': ['cinnamon raison bread', 'milk'],
+          'Breakfast': ['eggs benedict', 'latte'],
+          'Lunch': ['falafel', 'dolmas', 'yogurt sauce'],
+          'Dinner': ['pad thai', 'thai iced tea'],
         },
       },
     };
@@ -53,7 +60,7 @@ export default class App extends React.Component {
       dateStr
     );
   }
-
+  // Logs meals under YYYYMMDD > Breakfast/Lunch/Dinner > Meal Array
   handleLogMealSubmit = (date, mealArr, meal) => {
     let newMealLogDateKey = this.genMealLogDateKey(date);
     let newMasterMealLog;
@@ -70,9 +77,24 @@ export default class App extends React.Component {
     }
     this.setState({ masterMealLog: newMasterMealLog });
   }
-
-  handleTrackSubmit = () => {
-    console.log('handleTrackSubmit fired');
+  // Tags meals that are time correlated with sub-optimal wellness
+  handleTrackSubmit = (date, scale, time) => {
+    if (scale < 3 || scale > 4) {
+      let lookupMealLogDateKey = this.genMealLogDateKey(date);
+      let lookupMeal1;
+      let lookupMeal2;
+      if (time === 'Morning') {
+        lookupMeal1 = 'Dinner';
+        lookupMeal2 = 'Lunch';
+      } else if (time === 'Afternoon') {
+        lookupMeal1 = 'Breakfast';
+        lookupMeal2 = 'Dinner';
+      } else {
+        lookupMeal1 = 'Lunch';
+        lookupMeal2 = 'Breakfast';
+      }
+      console.log(lookupMealLogDateKey);
+    }
   }
 
   render() {
@@ -80,7 +102,8 @@ export default class App extends React.Component {
     return this.state.fontLoaded && <RootStack
       screenProps={{
         onTrackSubmit: this.handleTrackSubmit,
-        onLogMealSubmit: this.handleLogMealSubmit
+        onLogMealSubmit: this.handleLogMealSubmit,
+        masterMealLog: this.state.masterMealLog,
       }}
     />;
   }

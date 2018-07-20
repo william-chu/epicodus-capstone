@@ -35,6 +35,7 @@ export default class Track extends React.Component {
       selectedDate: this.defaultDate,
       selectedDateStr: this.defaultDateStr,
       selectedScaleInput: 4,
+      selectedTimeInput: 'Morning',
       scale: [
         {
           label: '1',
@@ -83,17 +84,17 @@ export default class Track extends React.Component {
       time: [
         {
           label: 'Morning',
-          value: '1',
+          value: 'Morning',
           size: 20,
         },
         {
           label: 'Afternoon',
-          value: '2',
+          value: 'Afternoon',
           size: 20,
         },
         {
           label: 'Evening',
-          value: '3',
+          value: 'Evening',
           size: 20,
         },
       ],
@@ -121,16 +122,18 @@ export default class Track extends React.Component {
     this.setState({selectedScaleInput: newSelectedScaleInput});
   };
   onSetTime = time => this.setState({ time });
+  onSetSelectedTimeInput = timeInput => {
+    this.setState({selectedTimeInput: timeInput});
+  }
 
   handleTrackSubmitPress = () => {
     let onTrackSubmit = this.props.screenProps.onTrackSubmit;
-    onTrackSubmit();
+    onTrackSubmit(this.state.selectedDate, this.state.selectedScaleInput, this.state.selectedTimeInput);
   }
 
   render() {
     let selectedScale;
-    let selectedTime = this.state.time.find(e => e.selected == true);
-    selectedTime = selectedTime ? selectedTime.value : this.state.time[0].label;
+    let selectedTime;
     return (
       <LinearGradient
         colors={['#B0A1F2', '#FFF', '#FFF']}
@@ -186,7 +189,12 @@ export default class Track extends React.Component {
             </Text>
             <RadioGroup
               radioButtons={this.state.time}
-              onPress={this.onSetTime}
+              onPress={() => {
+                this.onSetTime,
+                selectedTime = this.state.time.find(e => e.selected == true),
+                selectedTime = selectedTime ? selectedTime.value : this.state.time[0].label,
+                this.onSetSelectedTimeInput(selectedTime)
+              }}
             />
           </View>
           <TouchableOpacity onPress={() => {
