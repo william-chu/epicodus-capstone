@@ -18,8 +18,8 @@ export default class App extends React.Component {
     this.state = {
       fontLoaded: false,
       masterMealLog: {
-        20180717: {
-          'breakfast': 'cinnamon raison bread',
+        20180719: {
+          'Breakfast': ['cinnamon raison bread', 'milk'],
         },
       },
     };
@@ -32,7 +32,7 @@ export default class App extends React.Component {
     this.setState({ fontLoaded: true });
   }
 
-  handleLogMealSubmit = (date, mealArr, meal) => {
+  genMealLogDateKey = (date) => {
     let dateNum = date.getDate();
     let monthNum = (date.getMonth() + 1);
     let dateStr;
@@ -47,20 +47,30 @@ export default class App extends React.Component {
     } else {
       monthStr = '0' + monthNum.toString();
     }
-    let newMealLogDateKey =
-    date.getFullYear().toString() +
-    monthStr +
-    dateStr;
-    
-      console.log(newMealLogDateKey);
-      console.log(this.state.masterMealLog[newMealLogDateKey]);
-    // if (this.state.masterMealLog.newMealLogDateKey === undefined) {
-    //   let newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
-    //     [newMealLogDateKey]: {[meal]: mealArr}
-    //   });
-    // }
-    // this.setState({ masterMealLog: newMasterMealLog });
+    return (
+      date.getFullYear().toString() +
+      monthStr +
+      dateStr
+    );
   }
+
+  handleLogMealSubmit = (date, mealArr, meal) => {
+    let newMealLogDateKey = this.genMealLogDateKey(date);
+    let newMasterMealLog;
+    if (this.state.masterMealLog[newMealLogDateKey] === undefined) {
+      newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
+        [newMealLogDateKey]: { [meal]: mealArr }
+      });
+    } else if (this.state.masterMealLog[newMealLogDateKey][meal] === undefined ) {
+      newMasterMealLog = Object.assign({}, this.state.masterMealLog);
+      newMasterMealLog[newMealLogDateKey][meal] = mealArr;
+    } else {
+      newMasterMealLog = Object.assign({}, this.state.masterMealLog);
+      newMasterMealLog[newMealLogDateKey][meal] = newMasterMealLog[newMealLogDateKey][meal].concat(mealArr);
+    }
+    this.setState({ masterMealLog: newMasterMealLog });
+  }
+
   handleTrackSubmit = () => {
     console.log('handleTrackSubmit fired');
   }
