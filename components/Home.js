@@ -75,7 +75,10 @@ export default class Home extends React.Component {
               </Text>
             </View>
           </TouchableWithoutFeedback>
-            <Image source={footer} style={styles.footer} />
+          <Image
+            resizeMode='contain'
+            source={footer}
+          />
         </View>
       </LinearGradient>
     );

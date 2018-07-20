@@ -50,9 +50,9 @@ export default function Login(props) {
       style={styles.gradient}>
       <View style={styles.containerFluid}>
         <Image
+          source={stomachImg}
           style={{flex:1}}
           resizeMode='contain'
-          source={stomachImg}
         />
         <View style={compStyles.loginSlogan}>
           <Text style={compStyles.loginSloganText}>
