@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-// General App Styles
+// General App Styles Go Here
 export default StyleSheet.create({
   gradient: {
     flex: 1,

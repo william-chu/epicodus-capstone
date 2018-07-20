@@ -34,14 +34,6 @@ export default class Home extends React.Component {
     super(props);
   }
 
-  handleLogMealSubmit = (date, mealArr, meal) => {
-    console.log('handleLogMealSubmit fired');
-    console.log(date);
-    console.log(mealArr);
-    console.log(meal);
-  }
-
-
   render() {
     return (
       <LinearGradient
@@ -54,7 +46,7 @@ export default class Home extends React.Component {
           </View>
           <View style={styles.flexRow}>
             <TouchableWithoutFeedback
-              onPress={() => this.props.navigation.navigate('LogMeal', { onLogMealSubmit: this.handleLogMealSubmit })} >
+              onPress={() => this.props.navigation.navigate('LogMeal')} >
               <View style={compStyles.mealBtn}>
                 <Image source={mealBtn} style={compStyles.actionBtn} />
                 <Text style={styles.h1}>Log Meal</Text>
@@ -62,7 +54,6 @@ export default class Home extends React.Component {
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
               onPress={() => this.props.navigation.navigate('Track')} >
-              {/* , { onTrackSubmit: this.handleTrackSubmit } */}
               <View>
                 <Image source={trackBtn} style={compStyles.actionBtn} />
                 <Text style={styles.h1}>Track BM</Text>

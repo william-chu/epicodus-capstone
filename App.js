@@ -17,6 +17,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       fontLoaded: false,
+      mealLog: [],
     };
   }
 
@@ -27,13 +28,22 @@ export default class App extends React.Component {
     this.setState({ fontLoaded: true });
   }
 
+  handleLogMealSubmit = (date, mealArr, meal) => {
+    console.log('handleLogMealSubmit fired');
+    console.log(date);
+    console.log(mealArr);
+    console.log(meal);
+  }
   handleTrackSubmit = () => {
     console.log('handleTrackSubmit fired');
   }
 
   render() {
     return this.state.fontLoaded && <RootStack
-      screenProps={this.handleTrackSubmit} 
+      screenProps={{
+        onTrackSubmit: this.handleTrackSubmit,
+        onLogMealSubmit: this.handleLogMealSubmit
+      }}
     />;
   }
 }

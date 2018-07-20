@@ -15,7 +15,7 @@ import mealBtn from '../assets/images/mealbtn.png';
 import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
-
+  // Component Styles Go Here
 });
 
 export default class LogMeal extends React.Component {
@@ -75,7 +75,7 @@ export default class LogMeal extends React.Component {
   }
 
   handleLogMealSubmitPress = () => {
-    let onLogMealSubmit = this.props.navigation.getParam('onLogMealSubmit');
+    let onLogMealSubmit = this.props.screenProps.onLogMealSubmit;
     onLogMealSubmit(this.state.selectedDate, this.state.mealInputArr, this.state.selectedMealInput);
   }
 
