@@ -24,11 +24,12 @@ export default class Track extends React.Component {
   constructor(props) {
     super(props);
     this.defaultDate = new Date();
-    this.defaultDateStr = (this.defaultDate.getMonth() + 1).toString() +
-    '/' +
-    this.defaultDate.getDate().toString() +
-    '/' +
-    this.defaultDate.getFullYear().toString();
+    this.defaultDateStr =
+      (this.defaultDate.getMonth() + 1).toString() +
+      '/' +
+      this.defaultDate.getDate().toString() +
+      '/' +
+      this.defaultDate.getFullYear().toString();
     this.state = {
       isDateTimePickerVisible: false,
       selectedDate: this.defaultDate,

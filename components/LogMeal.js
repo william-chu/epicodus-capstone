@@ -57,11 +57,12 @@ export default class LogMeal extends React.Component {
   showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
   hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
   setSelectedDateStr = (date) => {
-    let newSelectedDateStr = (date.getMonth() + 1).toString() +
-    '/' +
-    date.getDate().toString() +
-    '/' +
-    date.getFullYear().toString();
+    let newSelectedDateStr =
+      (date.getMonth() + 1).toString() +
+      '/' +
+      date.getDate().toString() +
+      '/' +
+      date.getFullYear().toString();
     this.setState({ selectedDateStr: newSelectedDateStr });
   }
   handleDatePicked = (date) => {

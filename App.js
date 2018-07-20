@@ -17,7 +17,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       fontLoaded: false,
-      mealLog: [],
+      masterMealLog: {},
     };
   }
 
@@ -29,16 +29,21 @@ export default class App extends React.Component {
   }
 
   handleLogMealSubmit = (date, mealArr, meal) => {
-    console.log('handleLogMealSubmit fired');
-    console.log(date);
-    console.log(mealArr);
-    console.log(meal);
+    let newMealLogObjKey =
+      date.getFullYear().toString() +
+      (date.getMonth() + 1).toString() +
+      date.getDate().toString();
+    let newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
+      [newMealLogObjKey]: meal, mealArr
+    });
+    this.setState({ masterMealLog: newMasterMealLog });
   }
   handleTrackSubmit = () => {
     console.log('handleTrackSubmit fired');
   }
 
   render() {
+    console.log(this.state.masterMealLog);
     return this.state.fontLoaded && <RootStack
       screenProps={{
         onTrackSubmit: this.handleTrackSubmit,
