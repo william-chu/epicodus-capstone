@@ -41,7 +41,8 @@ export default function BristolScale(props) {
         </View>
         <Image
           source={bristolScale}
-          style={compStyles.chart}
+          style={[{flex:1}, compStyles.chart]}
+          resizeMode='contain'
         />
         <Image
           source={footer}

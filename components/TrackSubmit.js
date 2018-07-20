@@ -37,7 +37,7 @@ export default function TrackSubmit(props) {
     specialText = <Text style={styles.h3}>Keep it up!</Text>;
   } else {
     resultImage = okayResult;
-    resultHeader = 'Room for Improvement';
+    resultHeader = 'Room to Improve';
     resultText = <Text>When you report 2, 5 or 6 your symptoms are moderate. Here are the meals you ate in the last 12 - 24 hours.</Text>;
   }
 
