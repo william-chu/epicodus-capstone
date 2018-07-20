@@ -121,7 +121,7 @@ export default class Track extends React.Component {
   onSetTime = time => this.setState({ time });
 
   handleTrackSubmitPress = () => {
-    let onTrackSubmit = this.props.navigation.getParam('onTrackSubmit');
+    let onTrackSubmit = this.props.screenProps;
     onTrackSubmit();
   }
 

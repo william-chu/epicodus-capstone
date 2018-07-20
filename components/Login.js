@@ -58,7 +58,8 @@ export default function Login(props) {
           <Text style={compStyles.loginSloganText}>for Better Digestive Health</Text>
         </View>
         <View>
-          <TextInput
+          {/* Authentication Not Configured */}
+          {/* <TextInput
             style={compStyles.loginInput}
             underlineColorAndroid='transparent'
             editable={true}
@@ -72,7 +73,7 @@ export default function Login(props) {
             maxLength={40}
             placeholder={'password'}
             secureTextEntry={true}
-          />
+          /> */}
         </View>
         <TouchableWithoutFeedback onPress={() => props.navigation.navigate('Home')} >
           <Image source={loginBtn} style={compStyles.loginBtn} />

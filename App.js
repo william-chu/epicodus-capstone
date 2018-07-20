@@ -27,8 +27,14 @@ export default class App extends React.Component {
     this.setState({ fontLoaded: true });
   }
 
+  handleTrackSubmit = () => {
+    console.log('handleTrackSubmit fired');
+  }
+
   render() {
-    return this.state.fontLoaded && <RootStack />;
+    return this.state.fontLoaded && <RootStack
+      screenProps={this.handleTrackSubmit} 
+    />;
   }
 }
 

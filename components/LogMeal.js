@@ -72,7 +72,6 @@ export default class LogMeal extends React.Component {
   onSetMeal = meal => this.setState({ meal });
   onSetSelectedMealInput = mealInput => {
     this.setState({selectedMealInput: mealInput});
-    console.log(this.state.selectedMealInput);
   }
 
   handleLogMealSubmitPress = () => {
@@ -81,7 +80,9 @@ export default class LogMeal extends React.Component {
   }
 
   handleMealInputToArr = (text) => {
-    let newMealInputArr = text.split(',');
+    let newMealInputArr = text.split(',').map(function(item) {
+      return item.trim().toLowerCase();
+    });
     this.setState({ mealInputArr: newMealInputArr });
   }
 

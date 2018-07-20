@@ -32,8 +32,6 @@ const compStyles = StyleSheet.create ({
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
 
   handleLogMealSubmit = (date, mealArr, meal) => {
@@ -42,9 +40,7 @@ export default class Home extends React.Component {
     console.log(mealArr);
     console.log(meal);
   }
-  handleTrackSubmit = () => {
-    console.log('handleTrackSubmit fired');
-  }
+
 
   render() {
     return (
@@ -65,7 +61,8 @@ export default class Home extends React.Component {
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
-              onPress={() => this.props.navigation.navigate('Track', { onTrackSubmit: this.handleTrackSubmit })} >
+              onPress={() => this.props.navigation.navigate('Track')} >
+              {/* , { onTrackSubmit: this.handleTrackSubmit } */}
               <View>
                 <Image source={trackBtn} style={compStyles.actionBtn} />
                 <Text style={styles.h1}>Track BM</Text>
