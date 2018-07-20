@@ -15,7 +15,7 @@ import mealBtn from '../assets/images/mealbtn.png';
 import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
-  // Component Styles Go Here
+  // Component Specific Styles Go Here
 });
 
 export default class LogMeal extends React.Component {
@@ -53,7 +53,7 @@ export default class LogMeal extends React.Component {
       ],
     };
   }
-  // DateTimePicker Update State
+  // DateTimePicker
   showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
   hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
   setSelectedDateStr = (date) => {
@@ -68,7 +68,7 @@ export default class LogMeal extends React.Component {
     this.setState({ isDateTimePickerVisible: false, selectedDate: date });
     this.setSelectedDateStr(date);
   }
-  // Radio Button Update State
+  // RadioGroup
   onSetMeal = meal => this.setState({ meal });
   onSetSelectedMealInput = mealInput => {
     this.setState({selectedMealInput: mealInput});
@@ -78,7 +78,6 @@ export default class LogMeal extends React.Component {
     let onLogMealSubmit = this.props.screenProps.onLogMealSubmit;
     onLogMealSubmit(this.state.selectedDate, this.state.mealInputArr, this.state.selectedMealInput);
   }
-
   handleMealInputToArr = (text) => {
     let newMealInputArr = text.split(',').map(function(item) {
       return item.trim().toLowerCase();
@@ -98,14 +97,21 @@ export default class LogMeal extends React.Component {
         style={styles.gradient}>
         <View style={styles.container}>
           <View style={styles.flex}>
-            <Image source={mealBtn} style={styles.headerImage} />
-            <Text style={styles.h1}>Log Meal</Text>
+            <Image
+              source={mealBtn}
+              style={styles.headerImage}
+            />
+            <Text style={styles.h1}>
+              Log Meal
+            </Text>
           </View>
           {/* DateTimePicker Begin */}
           <View>
             <Text style={styles.h3}>{this.state.selectedDateStr}</Text>
             <TouchableOpacity onPress={this.showDateTimePicker}>
-              <Text style={styles.btn}>CHANGE DATE</Text>
+              <Text style={styles.btn}>
+                CHANGE DATE
+              </Text>
             </TouchableOpacity>
             <DateTimePicker
               isVisible={this.state.isDateTimePickerVisible}
@@ -126,7 +132,9 @@ export default class LogMeal extends React.Component {
             />
           </View>
           <View style={styles.flex}>
-            <Text style={styles.h3}>Which meal?</Text>
+            <Text style={styles.h3}>
+              Which meal?
+            </Text>
             <RadioGroup
               radioButtons={this.state.meal}
               onPress={() => {
@@ -135,11 +143,15 @@ export default class LogMeal extends React.Component {
                 selectedMeal = selectedMeal ? selectedMeal.value : this.state.meal[0].label,
                 this.onSetSelectedMealInput(selectedMeal)}} />
           </View>
-          <TouchableOpacity onPress={() => { this.handleLogMealSubmitPress(),
-            this.props.navigation.navigate('LogMealSubmit') }} >
+          <TouchableOpacity onPress={() => {
+            this.handleLogMealSubmitPress(),
+            this.props.navigation.navigate('LogMealSubmit') }}>
             <Text style={styles.btnPurple}>SUBMIT</Text>
           </TouchableOpacity>
-          <Image source={footer} style={styles.footer} />
+          <Image
+            source={footer}
+            style={styles.footer}
+          />
         </View>
       </LinearGradient>
     );

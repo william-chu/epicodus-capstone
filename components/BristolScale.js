@@ -13,6 +13,7 @@ import bristolScale from '../assets/images/bristolscale.png';
 import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
+  // Component Specific Styles Go Here
   chart: {
     marginBottom: 20,
   },
@@ -25,14 +26,27 @@ export default function BristolScale(props) {
       style={styles.gradient}>
       <View style={styles.container}>
         <View style={styles.flex}>
-          <Image source={trackBtn} style={styles.headerImage} />
-          <Text style={styles.h1}>Bristol Scale</Text>
+          <Image
+            source={trackBtn}
+            style={styles.headerImage}
+          />
+          <Text style={styles.h1}>
+            Bristol Scale
+          </Text>
           <TouchableOpacity onPress={() => props.navigation.navigate('Track')}>
-            <Text style={styles.btn}>GO BACK</Text>
+            <Text style={styles.btn}>
+              GO BACK
+            </Text>
           </TouchableOpacity>
         </View>
-        <Image source={bristolScale} style={compStyles.chart}/>
-        <Image source={footer} style={styles.footer} />
+        <Image
+          source={bristolScale}
+          style={compStyles.chart}
+        />
+        <Image
+          source={footer}
+          style={styles.footer}
+        />
        </View>
     </LinearGradient>
   );

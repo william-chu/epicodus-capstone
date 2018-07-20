@@ -14,7 +14,7 @@ import badResult from '../assets/images/badresult.png';
 import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
-
+  // Component Specific Styles Go Here
 });
 
 export default function TrackSubmit(props) {

@@ -14,6 +14,7 @@ import trackBtn from '../assets/images/trackbtn.png';
 import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
+  // Component Specific Styles Go Here
   radioGroupBtn: {
     marginTop: 10,
   },
@@ -97,7 +98,7 @@ export default class Track extends React.Component {
       ],
     };
   }
-  // DateTimePicker Update State
+  // DateTimePicker
   showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
   hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
   setSelectedDateStr = (date) => {
@@ -112,7 +113,7 @@ export default class Track extends React.Component {
     this.setState({ isDateTimePickerVisible: false, selectedDate: date });
     this.setSelectedDateStr(date);
   }
-  // Radio Button Update State
+  // RadioGroup
   onSetScale = scale => this.setState({ scale });
   onSetSelectedScaleInput = scaleInput => {
     let newSelectedScaleInput = parseInt(scaleInput);
@@ -135,14 +136,21 @@ export default class Track extends React.Component {
         style={styles.gradient}>
         <View style={styles.container}>
           <View style={styles.flex}>
-            <Image source={trackBtn} style={styles.headerImage} />
-            <Text style={styles.h1}>Track BM</Text>
+            <Image
+              source={trackBtn}
+              style={styles.headerImage}
+            />
+            <Text style={styles.h1}>
+              Track BM
+            </Text>
           </View>
           {/* DateTimePicker Begin */}
           <View>
             <Text style={styles.h3}>{this.state.selectedDateStr}</Text>
             <TouchableOpacity onPress={this.showDateTimePicker}>
-              <Text style={styles.btn}>CHANGE DATE</Text>
+              <Text style={styles.btn}>
+                CHANGE DATE
+              </Text>
             </TouchableOpacity>
             <DateTimePicker
               isVisible={this.state.isDateTimePickerVisible}
@@ -152,7 +160,9 @@ export default class Track extends React.Component {
           </View>
           {/* DateTimePicker End */}
           <View style={styles.flex}>
-            <Text style={styles.h3}>Where on the scale?</Text>
+            <Text style={styles.h3}>
+              Where on the scale?
+            </Text>
             <RadioGroup
               radioButtons={this.state.scale}
               onPress={() => {
@@ -164,19 +174,31 @@ export default class Track extends React.Component {
               flexDirection='row'
             />
             <TouchableOpacity onPress={() => this.props.navigation.navigate('BristolScale')}>
-              <Text style={[styles.btn, compStyles.radioGroupBtn]}>SEE SCALE</Text>
+              <Text style={[styles.btn, compStyles.radioGroupBtn]}>
+                SEE SCALE
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.flex}>
-            <Text style={styles.h3}>What time?</Text>
-            <RadioGroup radioButtons={this.state.time} onPress={this.onSetTime} />
+            <Text style={styles.h3}>
+              What time?
+            </Text>
+            <RadioGroup
+              radioButtons={this.state.time}
+              onPress={this.onSetTime}
+            />
           </View>
           <TouchableOpacity onPress={() => {
             this.handleTrackSubmitPress(),
             this.props.navigation.navigate('TrackSubmit', { scaleInput: this.state.selectedScaleInput })}} >
-            <Text style={styles.btnPurple}>SUBMIT</Text>
+            <Text style={styles.btnPurple}>
+              SUBMIT
+            </Text>
           </TouchableOpacity>
-          <Image source={footer} style={styles.footer} />
+          <Image
+            source={footer}
+            style={styles.footer}
+          />
         </View>
       </LinearGradient>
     );

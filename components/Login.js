@@ -14,6 +14,7 @@ import stomachImg from '../assets/images/stomach.png';
 import loginBtn from '../assets/images/loginbtn.png';
 
 const compStyles = StyleSheet.create({
+  // Component Specific Styles Go Here
   loginSlogan: {
     marginBottom: 10,
   },
@@ -54,8 +55,12 @@ export default function Login(props) {
           source={stomachImg}
         />
         <View style={compStyles.loginSlogan}>
-          <Text style={compStyles.loginSloganText}>Discover Your Dietary Triggers</Text>
-          <Text style={compStyles.loginSloganText}>for Better Digestive Health</Text>
+          <Text style={compStyles.loginSloganText}>
+            Discover Your Dietary Triggers
+          </Text>
+          <Text style={compStyles.loginSloganText}>
+            for Better Digestive Health
+          </Text>
         </View>
         <View>
           {/* Authentication Not Configured */}
@@ -76,7 +81,10 @@ export default function Login(props) {
           /> */}
         </View>
         <TouchableWithoutFeedback onPress={() => props.navigation.navigate('Home')} >
-          <Image source={loginBtn} style={compStyles.loginBtn} />
+          <Image
+            source={loginBtn}
+            style={compStyles.loginBtn}
+          />
         </TouchableWithoutFeedback>
       </View>
     </LinearGradient>

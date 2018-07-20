@@ -15,6 +15,7 @@ import analyzeBtn from '../assets/images/analyzebtn.png';
 import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create ({
+  // Component Specific Styles Go Here
   userImg: {
     width: 150,
     height: 150,
@@ -42,28 +43,36 @@ export default class Home extends React.Component {
         <View style={styles.container}>
           <View style={styles.flex}>
             <Image source={userImg} style={compStyles.userImg} />
-            <Text style={styles.h2}>What would you like to do?</Text>
+            <Text style={styles.h2}>
+              What would you like to do?
+            </Text>
           </View>
           <View style={styles.flexRow}>
             <TouchableWithoutFeedback
               onPress={() => this.props.navigation.navigate('LogMeal')} >
               <View style={compStyles.mealBtn}>
                 <Image source={mealBtn} style={compStyles.actionBtn} />
-                <Text style={styles.h1}>Log Meal</Text>
+                <Text style={styles.h1}>
+                  Log Meal
+                </Text>
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
               onPress={() => this.props.navigation.navigate('Track')} >
               <View>
                 <Image source={trackBtn} style={compStyles.actionBtn} />
-                <Text style={styles.h1}>Track BM</Text>
+                <Text style={styles.h1}>
+                  Track BM
+                </Text>
               </View>
             </TouchableWithoutFeedback>
           </View>
           <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Analyze')} >
             <View>
               <Image source={analyzeBtn} style={compStyles.actionBtn} />
-              <Text style={styles.h1}>Analyze</Text>
+              <Text style={styles.h1}>
+                Analyze
+              </Text>
             </View>
           </TouchableWithoutFeedback>
             <Image source={footer} style={styles.footer} />
