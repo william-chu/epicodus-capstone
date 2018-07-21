@@ -76,7 +76,7 @@ export default class Home extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <Image
-            resizeMode='contain'
+            resizeMode={Image.resizeMode.center}
             source={footer}
           />
         </View>

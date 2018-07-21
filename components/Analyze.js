@@ -38,7 +38,7 @@ export default function Analyze(props) {
         </Text>
         <Image
           source={footer}
-          style={styles.footer}
+          resizeMode={Image.resizeMode.center}
         />
       </View>
     </LinearGradient>
