@@ -19,16 +19,22 @@ export default class App extends React.Component {
       fontLoaded: false,
       masterMealLog: {
         20180718: {
+          'Breakfast': ['raspberry scone', 'orange juice'],
+          'Lunch': ['pepperoni pizza', 'french fries'],
+          'Dinner': ['pho', 'fried wontons'],
+        },
+        20180719: {
           'Breakfast': ['cinnamon raisin bread', 'milk'],
           'Lunch': ['lasagna', 'caesar salad'],
           'Dinner': ['chicken burrito', 'chips and salsa'],
         },
-        20180719: {
+        20180720: {
           'Breakfast': ['eggs benedict', 'latte'],
           'Lunch': ['falafel', 'dolmas', 'yogurt sauce'],
           'Dinner': ['pad thai', 'thai iced tea'],
         },
       },
+      suspectMeals: {},
     };
   }
 
@@ -77,28 +83,59 @@ export default class App extends React.Component {
     }
     this.setState({ masterMealLog: newMasterMealLog });
   }
-  // Tags meals that are time correlated with sub-optimal wellness
+  getSuspectMeals = (mealLogDateKey, time) => {
+    let lookupMeal1;
+    let lookupMeal2;
+    let lookupMealIndex1;
+    let lookupMealIndex2;
+    let lookupMealDate1;
+    let lookupMealDate2;
+    if (time === 'Morning') {
+      lookupMeal1 = 'Dinner';
+      lookupMeal2 = 'Lunch';
+      lookupMealIndex1 = (Object.keys(this.state.masterMealLog).indexOf(mealLogDateKey)) - 2;
+      lookupMealIndex2 = lookupMealIndex1;
+    } else if (time === 'Afternoon') {
+      lookupMeal1 = 'Breakfast';
+      lookupMeal2 = 'Dinner';
+      lookupMealIndex1 = (Object.keys(this.state.masterMealLog).indexOf(mealLogDateKey)) - 1;
+      lookupMealIndex2 = lookupMealIndex1 - 1 ;
+    } else {
+      lookupMeal1 = 'Lunch';
+      lookupMeal2 = 'Breakfast';
+      lookupMealIndex1 = (Object.keys(this.state.masterMealLog).indexOf(mealLogDateKey)) - 1;
+      lookupMealIndex2 = lookupMealIndex1;
+    }
+    lookupMealDate1 = Object.keys(this.state.masterMealLog)[lookupMealIndex1];
+    lookupMealDate2 = Object.keys(this.state.masterMealLog)[lookupMealIndex2];
+    newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
+      [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
+      [lookupMealDate2]: { [lookupMeal2]: this.state.masterMealLog[lookupMealDate2][lookupMeal2] }
+    });
+    this.setState({ suspectMeals: newSuspectMeals });
+  }
+  // Tags meals correlated with sub-optimal wellness
   handleTrackSubmit = (date, scale, time) => {
     if (scale < 3 || scale > 4) {
       let lookupMealLogDateKey = this.genMealLogDateKey(date);
-      let lookupMeal1;
-      let lookupMeal2;
-      if (time === 'Morning') {
-        lookupMeal1 = 'Dinner';
-        lookupMeal2 = 'Lunch';
-      } else if (time === 'Afternoon') {
-        lookupMeal1 = 'Breakfast';
-        lookupMeal2 = 'Dinner';
+      // Generate empty meal log if missing
+      if (this.state.masterMealLog[lookupMealLogDateKey] === undefined) {
+        newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
+          [lookupMealLogDateKey]: {}
+        });
+        this.setState({ masterMealLog: newMasterMealLog },
+          () => {
+            this.getSuspectMeals(lookupMealLogDateKey, time);
+          }
+        );
       } else {
-        lookupMeal1 = 'Lunch';
-        lookupMeal2 = 'Breakfast';
+        this.getSuspectMeals(lookupMealLogDateKey, time);
       }
-      console.log(lookupMealLogDateKey);
     }
   }
 
   render() {
-    console.log(this.state.masterMealLog);
+    console.log(this.state);
     return this.state.fontLoaded && <RootStack
       screenProps={{
         onTrackSubmit: this.handleTrackSubmit,
