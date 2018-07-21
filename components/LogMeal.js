@@ -12,7 +12,6 @@ import RadioGroup from 'react-native-radio-buttons-group';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import styles from './styles';
 import mealBtn from '../assets/images/mealbtn.png';
-import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
@@ -149,10 +148,6 @@ export default class LogMeal extends React.Component {
             this.props.navigation.navigate('LogMealSubmit') }}>
             <Text style={styles.btnPurple}>SUBMIT</Text>
           </TouchableOpacity>
-          <Image
-            source={footer}
-            style={styles.footer}
-          />
         </View>
       </LinearGradient>
     );

@@ -11,7 +11,6 @@ import RadioGroup from 'react-native-radio-buttons-group';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import styles from './styles';
 import trackBtn from '../assets/images/trackbtn.png';
-import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
@@ -207,10 +206,6 @@ export default class Track extends React.Component {
               SUBMIT
             </Text>
           </TouchableOpacity>
-          <Image
-            source={footer}
-            style={styles.footer}
-          />
         </View>
       </LinearGradient>
     );

@@ -15,7 +15,7 @@ import footer from '../assets/images/footer.png';
 const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
   chart: {
-    marginBottom: 20,
+    marginBottom: 50,
   },
 });
 
@@ -41,12 +41,8 @@ export default function BristolScale(props) {
         </View>
         <Image
           source={bristolScale}
-          style={[{flex:1}, compStyles.chart]}
+          style={[{flex:.8}, compStyles.chart]}
           resizeMode='contain'
-        />
-        <Image
-          source={footer}
-          style={styles.footer}
         />
        </View>
     </LinearGradient>

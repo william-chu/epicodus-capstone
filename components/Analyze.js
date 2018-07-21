@@ -29,11 +29,6 @@ export default function Analyze(props) {
           <Text style={styles.h1}>
             Our Analysis
           </Text>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Home')} >
-            <Text style={styles.btn}>
-              GO BACK
-            </Text>
-          </TouchableOpacity>
         </View>
         <Text>
           These are the logged meals that correlated with you not feeling well in the last 30 days.

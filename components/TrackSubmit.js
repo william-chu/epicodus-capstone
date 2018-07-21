@@ -12,8 +12,6 @@ import { genMealLogDateKey } from './helper';
 import badResult from '../assets/images/badresult.png';
 import goodResult from '../assets/images/goodresult.png';
 import okayResult from '../assets/images/okayresult.png';
-import footer from '../assets/images/footer.png';
-
 
 const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
@@ -31,7 +29,14 @@ export default function TrackSubmit(props) {
   let lookupMealIndex2;
   let lookupMealDate1;
   let lookupMealDate2;
+  let suspectHeader = <Text style={styles.h3}>Meals eaten 30-40 hours ago:</Text>;
   let resultSuspectMeals;
+  let resultImage;
+  let resultHeader;
+  let resultText;
+  let actionText = <Text>Tap Analyze for additional information</Text>;
+  let specialText = null;
+
   if ( scaleInput !== 3 && scaleInput !== 4) {
     if (time === 'Morning') {
       lookupMeal1 = 'Dinner';
@@ -54,32 +59,29 @@ export default function TrackSubmit(props) {
     resultSuspectMeals =
       <View>
         <Text style={styles.h1}>{lookupMealDate1} - {lookupMeal1}</Text>
-        <Text style={styles.h3}>{(masterMealLog[lookupMealDate1][lookupMeal1]).join(', ')}</Text>
+        <Text style={styles.h4}>{(masterMealLog[lookupMealDate1][lookupMeal1]).join(', ')}</Text>
         <Text style={styles.h1}>{lookupMealDate2} - {lookupMeal2}</Text>
-        <Text style={styles.h3}>{(masterMealLog[lookupMealDate2][lookupMeal2]).join(', ')}</Text>
+        <Text style={styles.h4}>{(masterMealLog[lookupMealDate2][lookupMeal2]).join(', ')}</Text>
       </View>;
   }
-  let resultImage;
-  let resultHeader;
-  let resultText;
-  let actionText = <Text>Select Analyze from the main page for further information.</Text>;
-  let specialText = null;
+
   if (scaleInput === 1 || scaleInput === 7) {
     resultImage = <Image source={badResult} style={styles.headerImage} />;
     resultHeader = 'Sound the Alarm';
-    resultText = <Text>When you report 1 or 7 your symptoms are severe. Here are the meals you ate in the last 30-40 hours.</Text>;
+    resultText = <Text>When you report a 1 or 7, your symptoms are severe.</Text>;
     specialText = <Text style={styles.redText}>If your issues persist, please seek professional medical attention.</Text>
   } else if (scaleInput === 3 || scaleInput === 4) {
     resultImage = <Image source={goodResult} style={styles.headerImage} />;
     resultHeader = 'In the Zone';
-    resultText = <Text style={[styles.h3, styles.textLeft]}>When you report 3 or 4 this means you’re in a healthy range.</Text>;
+    resultText = <Text style={styles.h3}>When you report a 3 or 4, you are in the optimal range.</Text>;
+    suspectHeader = null;
     resultSuspectMeals = null;
     actionText = null;
     specialText = <Text style={styles.h3}>Keep it up!</Text>;
   } else {
     resultImage = <Image source={okayResult} style={styles.headerImage} />;
     resultHeader = 'Room to Improve';
-    resultText = <Text>When you report 2, 5 or 6 your symptoms are moderate. Here are the meals you ate in the last 30 - 40 hours.</Text>;
+    resultText = <Text>When you report a 2, 5 or 6, your symptoms are moderate.</Text>;
   }
 
   return (
@@ -95,10 +97,12 @@ export default function TrackSubmit(props) {
           </TouchableOpacity>
         </View>
         {resultText}
-        {resultSuspectMeals}
+        <View>
+          {suspectHeader}
+          {resultSuspectMeals}
+        </View>
         {actionText}
         {specialText}
-        <Image source={footer} style={styles.footer} />
       </View>
     </LinearGradient>
   );

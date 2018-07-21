@@ -9,7 +9,6 @@ import {
 import { LinearGradient } from 'expo';
 import styles from './styles';
 import mealBtn from '../assets/images/mealbtn.png';
-import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
@@ -35,16 +34,12 @@ export default function LogMealSubmit(props) {
             </Text>
           </TouchableOpacity>
         </View>
-        <Text style={[styles.h3, styles.textLeft]}>
-          Establishing a habit of accurately logging your diet will increase the accuracy of our analysis.
+        <Text style={styles.h3}>
+          Accurately logging your diet every day will increase the accuracy of our analysis.
         </Text>
         <Text style={styles.h3}>
           Keep it up!
         </Text>
-        <Image
-          source={footer}
-          style={styles.footer}
-        />
       </View>
     </LinearGradient>
   );
