@@ -68,20 +68,18 @@ export default function TrackSubmit(props) {
   if (scaleInput === 1 || scaleInput === 7) {
     resultImage = <Image source={badResult} style={styles.headerImage} />;
     resultHeader = 'Sound the Alarm';
-    resultText = <Text>When you report a 1 or 7, your symptoms are severe.</Text>;
+    resultText = <Text style={styles.h3}>Your symptoms are severe.</Text>;
     specialText = <Text style={styles.redText}>If your issues persist, please seek professional medical attention.</Text>
   } else if (scaleInput === 3 || scaleInput === 4) {
     resultImage = <Image source={goodResult} style={styles.headerImage} />;
     resultHeader = 'In the Zone';
-    resultText = <Text style={styles.h3}>When you report a 3 or 4, you are in the optimal range.</Text>;
+    resultText = <Text style={styles.h3}>You are in the optimal range.</Text>;
     suspectHeader = null;
-    resultSuspectMeals = null;
-    actionText = null;
-    specialText = <Text style={styles.h3}>Keep it up!</Text>;
+    resultSuspectMeals = <Text style={styles.h3}>Keep it up!</Text>;
   } else {
     resultImage = <Image source={okayResult} style={styles.headerImage} />;
     resultHeader = 'Room to Improve';
-    resultText = <Text>When you report a 2, 5 or 6, your symptoms are moderate.</Text>;
+    resultText = <Text style={styles.h3}>Your symptoms are moderate.</Text>;
   }
 
   return (

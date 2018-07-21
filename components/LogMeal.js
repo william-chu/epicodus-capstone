@@ -144,8 +144,11 @@ export default class LogMeal extends React.Component {
                 this.onSetSelectedMealInput(selectedMeal)}} />
           </View>
           <TouchableOpacity onPress={() => {
-            this.handleLogMealSubmitPress(),
-            this.props.navigation.navigate('LogMealSubmit') }}>
+            if(this.state.mealInputArr.length > 0) {
+              this.handleLogMealSubmitPress(),
+              this.props.navigation.navigate('LogMealSubmit')
+            }
+          }}>
             <Text style={styles.btnPurple}>SUBMIT</Text>
           </TouchableOpacity>
         </View>

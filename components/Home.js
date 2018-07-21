@@ -21,6 +21,9 @@ const compStyles = StyleSheet.create ({
     height: 150,
     marginTop: 20,
   },
+  actionSection: {
+    marginTop: 40,
+  },
   actionBtn: {
     width: 100,
     height: 100,
@@ -47,7 +50,7 @@ export default class Home extends React.Component {
               What would you like to do?
             </Text>
           </View>
-          <View style={styles.flexRow}>
+          <View style={[styles.flexRow, compStyles.actionSection]}>
             <TouchableWithoutFeedback
               onPress={() => this.props.navigation.navigate('LogMeal')} >
               <View style={compStyles.mealBtn}>
