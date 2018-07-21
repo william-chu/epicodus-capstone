@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import styles from './styles';
+import { genMealLogDateKey } from './helper';
 import goodResult from '../assets/images/goodresult.png';
 import okayResult from '../assets/images/okayresult.png';
 import badResult from '../assets/images/badresult.png';
@@ -16,28 +17,6 @@ import footer from '../assets/images/footer.png';
 const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
 });
-
-genMealLogDateKey = (date) => {
-  let dateNum = date.getDate();
-  let monthNum = (date.getMonth() + 1);
-  let dateStr;
-  let monthStr;
-  if (dateNum > 9) {
-    dateStr = dateNum.toString();
-  } else {
-    dateStr = '0' + dateNum.toString();
-  }
-  if (monthNum > 9) {
-    monthStr = monthNum.toString();
-  } else {
-    monthStr = '0' + monthNum.toString();
-  }
-  return (
-    date.getFullYear().toString() +
-    monthStr +
-    dateStr
-  );
-}
 
 export default function TrackSubmit(props) {
   let scaleInput = props.navigation.getParam('scaleInput');
