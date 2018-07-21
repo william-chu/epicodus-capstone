@@ -66,7 +66,7 @@ export default class App extends React.Component {
       dateStr
     );
   }
-  // Logs meals under YYYYMMDD > Breakfast/Lunch/Dinner > Meal Array
+  // Logs meals under YYYYMMDD > Breakfast/Lunch/Dinner > Meal Array, branching prevents overwriting of existing objects
   handleLogMealSubmit = (date, mealArr, meal) => {
     let newMealLogDateKey = this.genMealLogDateKey(date);
     let newMasterMealLog;
@@ -83,6 +83,7 @@ export default class App extends React.Component {
     }
     this.setState({ masterMealLog: newMasterMealLog });
   }
+  // Logs suspect meals under YYYYMMDD > Breakfast/Lunch/Dinner > Meal Array, branching prevents overwriting of existing objects
   getSuspectMeals = (mealLogDateKey, time) => {
     let lookupMeal1;
     let lookupMeal2;
@@ -108,10 +109,31 @@ export default class App extends React.Component {
     }
     lookupMealDate1 = Object.keys(this.state.masterMealLog)[lookupMealIndex1];
     lookupMealDate2 = Object.keys(this.state.masterMealLog)[lookupMealIndex2];
-    newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
-      [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
-      [lookupMealDate2]: { [lookupMeal2]: this.state.masterMealLog[lookupMealDate2][lookupMeal2] }
-    });
+    if (lookupMealDate1 === lookupMealDate2 && this.state.suspectMeals[lookupMealDate1] === undefined) {
+      newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
+        [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
+      });
+      newSuspectMeals[lookupMealDate2][lookupMeal2] = this.state.masterMealLog[lookupMealDate2][lookupMeal2];
+    } else if (this.state.suspectMeals[lookupMealDate1] === undefined && this.state.suspectMeals[lookupMealDate2] === undefined) {
+      newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
+        [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
+        [lookupMealDate2]: { [lookupMeal2]: this.state.masterMealLog[lookupMealDate2][lookupMeal2] }
+      });
+    } else if (lookupMealDate1 !== lookupMealDate2 && this.state.suspectMeals[lookupMealDate1] === undefined) {
+      newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
+        [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
+      });
+      newSuspectMeals[lookupMealDate2][lookupMeal2] = this.state.masterMealLog[lookupMealDate2][lookupMeal2];
+    } else if (lookupMealDate1 !== lookupMealDate2 && this.state.suspectMeals[lookupMealDate2] === undefined) {
+      newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
+        [lookupMealDate2]: { [lookupMeal2]: this.state.masterMealLog[lookupMealDate2][lookupMeal2] },
+      });
+      newSuspectMeals[lookupMealDate1][lookupMeal1] = this.state.masterMealLog[lookupMealDate1][lookupMeal1];
+    } else {
+      newSuspectMeals = Object.assign({}, this.state.suspectMeals);
+      newSuspectMeals[lookupMealDate1][lookupMeal1] = this.state.masterMealLog[lookupMealDate1][lookupMeal1];
+      newSuspectMeals[lookupMealDate2][lookupMeal2] = this.state.masterMealLog[lookupMealDate2][lookupMeal2];
+    }
     this.setState({ suspectMeals: newSuspectMeals });
   }
   // Tags meals correlated with sub-optimal wellness
@@ -135,7 +157,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state.suspectMeals);
     return this.state.fontLoaded && <RootStack
       screenProps={{
         onTrackSubmit: this.handleTrackSubmit,
