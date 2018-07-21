@@ -199,7 +199,10 @@ export default class Track extends React.Component {
           </View>
           <TouchableOpacity onPress={() => {
             this.handleTrackSubmitPress(),
-            this.props.navigation.navigate('TrackSubmit', { scaleInput: this.state.selectedScaleInput })}} >
+            this.props.navigation.navigate('TrackSubmit', {
+              date: this.state.selectedDate,
+              scaleInput: this.state.selectedScaleInput,
+              timeInput: this.state.selectedTimeInput })}} >
             <Text style={styles.btnPurple}>
               SUBMIT
             </Text>

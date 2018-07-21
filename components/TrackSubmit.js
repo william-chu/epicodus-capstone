@@ -17,8 +17,68 @@ const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
 });
 
+genMealLogDateKey = (date) => {
+  let dateNum = date.getDate();
+  let monthNum = (date.getMonth() + 1);
+  let dateStr;
+  let monthStr;
+  if (dateNum > 9) {
+    dateStr = dateNum.toString();
+  } else {
+    dateStr = '0' + dateNum.toString();
+  }
+  if (monthNum > 9) {
+    monthStr = monthNum.toString();
+  } else {
+    monthStr = '0' + monthNum.toString();
+  }
+  return (
+    date.getFullYear().toString() +
+    monthStr +
+    dateStr
+  );
+}
+
 export default function TrackSubmit(props) {
   let scaleInput = props.navigation.getParam('scaleInput');
+  let time = props.navigation.getParam('timeInput');
+  let date = props.navigation.getParam('date');
+  let masterMealLog = props.screenProps.masterMealLog;
+  let mealLogDateKey = genMealLogDateKey(date);
+  let lookupMeal1;
+  let lookupMeal2;
+  let lookupMealIndex1;
+  let lookupMealIndex2;
+  let lookupMealDate1;
+  let lookupMealDate2;
+  let resultSuspectMeals;
+  if ( scaleInput !== 3 && scaleInput !== 4) {
+    if (time === 'Morning') {
+      lookupMeal1 = 'Dinner';
+      lookupMeal2 = 'Lunch';
+      lookupMealIndex1 = (Object.keys(masterMealLog).indexOf(mealLogDateKey)) - 2;
+      lookupMealIndex2 = lookupMealIndex1;
+    } else if (time === 'Afternoon') {
+      lookupMeal1 = 'Breakfast';
+      lookupMeal2 = 'Dinner';
+      lookupMealIndex1 = (Object.keys(masterMealLog).indexOf(mealLogDateKey)) - 1;
+      lookupMealIndex2 = lookupMealIndex1 - 1 ;
+    } else {
+      lookupMeal1 = 'Lunch';
+      lookupMeal2 = 'Breakfast';
+      lookupMealIndex1 = (Object.keys(masterMealLog).indexOf(mealLogDateKey)) - 1;
+      lookupMealIndex2 = lookupMealIndex1;
+    }
+    lookupMealDate1 = Object.keys(masterMealLog)[lookupMealIndex1];
+    lookupMealDate2 = Object.keys(masterMealLog)[lookupMealIndex2];
+    resultSuspectMeals =
+      <View>
+        <Text style={styles.h1}>{lookupMealDate1} - {lookupMeal1}</Text>
+        <Text style={styles.h3}>{(masterMealLog[lookupMealDate1][lookupMeal1]).join(', ')}</Text>
+        <Text style={styles.h1}>{lookupMealDate2} - {lookupMeal2}</Text>
+        <Text style={styles.h3}>{(masterMealLog[lookupMealDate2][lookupMeal2]).join(', ')}</Text>
+      </View>;
+  }
   let resultImage;
   let resultHeader;
   let resultText;
@@ -33,6 +93,7 @@ export default function TrackSubmit(props) {
     resultImage = goodResult;
     resultHeader = 'In the Zone';
     resultText = <Text style={[styles.h3, styles.textLeft]}>When you report 3 or 4 this means you’re in a healthy range.</Text>;
+    resultSuspectMeals = null;
     actionText = null;
     specialText = <Text style={styles.h3}>Keep it up!</Text>;
   } else {
@@ -54,6 +115,7 @@ export default function TrackSubmit(props) {
           </TouchableOpacity>
         </View>
         {resultText}
+        {resultSuspectMeals}
         {actionText}
         {specialText}
         <Image source={footer} style={styles.footer} />
