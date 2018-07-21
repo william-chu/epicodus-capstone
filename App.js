@@ -109,6 +109,7 @@ export default class App extends React.Component {
     }
     lookupMealDate1 = Object.keys(this.state.masterMealLog)[lookupMealIndex1];
     lookupMealDate2 = Object.keys(this.state.masterMealLog)[lookupMealIndex2];
+    let newSuspectMeals;
     if (lookupMealDate1 === lookupMealDate2 && this.state.suspectMeals[lookupMealDate1] === undefined) {
       newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
         [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
@@ -142,7 +143,7 @@ export default class App extends React.Component {
       let lookupMealLogDateKey = this.genMealLogDateKey(date);
       // Generate empty meal log if missing
       if (this.state.masterMealLog[lookupMealLogDateKey] === undefined) {
-        newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
+        let newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
           [lookupMealLogDateKey]: {}
         });
         this.setState({ masterMealLog: newMasterMealLog },
