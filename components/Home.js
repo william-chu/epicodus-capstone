@@ -79,7 +79,7 @@ export default class Home extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <Image
-            style={{ width:'100%'}}
+            style={styles.fullWidthImagePadded}
             resizeMode='contain'
             source={footer}
           />

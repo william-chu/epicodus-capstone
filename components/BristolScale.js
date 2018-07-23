@@ -41,10 +41,10 @@ export default function BristolScale(props) {
         </View>
         <Image
           source={bristolScale}
-          style={[{flex:.8}, compStyles.chart]}
+          style={styles.fullWidthImagePadded}
           resizeMode='contain'
         />
-       </View>
+      </View>
     </LinearGradient>
   );
 }

@@ -84,16 +84,19 @@ export default class Track extends React.Component {
         {
           label: 'Morning',
           value: 'Morning',
+          color: '#4A4A4A',
           size: 20,
         },
         {
           label: 'Afternoon',
           value: 'Afternoon',
+          color: '#4A4A4A',
           size: 20,
         },
         {
           label: 'Evening',
           value: 'Evening',
+          color: '#4A4A4A',
           size: 20,
         },
       ],

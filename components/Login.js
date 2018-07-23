@@ -51,7 +51,7 @@ export default function Login(props) {
       <View style={styles.containerFluid}>
         <Image
           source={stomachImg}
-          style={{flex:1}}
+          style={styles.fullWidthImage}
           resizeMode='contain'
         />
         <View style={compStyles.loginSlogan}>

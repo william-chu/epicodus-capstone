@@ -92,6 +92,7 @@ export default class App extends React.Component {
         onTrackSubmit: this.handleTrackSubmit,
         onLogMealSubmit: this.handleLogMealSubmit,
         masterMealLog: this.state.masterMealLog,
+        suspectMeals: this.state.suspectMeals,
       }}
     />;
   }

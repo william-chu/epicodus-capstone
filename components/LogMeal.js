@@ -37,16 +37,19 @@ export default class LogMeal extends React.Component {
         {
           label: 'Breakfast',
           value: 'Breakfast',
+          color: '#4A4A4A',
           size: 20,
         },
         {
           label: 'Lunch',
           value: 'Lunch',
+          color: '#4A4A4A',
           size: 20,
         },
         {
           label: 'Dinner',
           value: 'Dinner',
+          color: '#4A4A4A',
           size: 20,
         },
       ],

@@ -29,11 +29,14 @@ export default function Analyze(props) {
             Our Analysis
           </Text>
         </View>
-        <Text>
-          These are the logged meals that correlated with you not feeling well in the last 30 days.
+        <Text style={styles.h4}>
+          These are the logged meals that correlated with you not feeling well in the last 30 days:
         </Text>
-        <Text>
+        <Text style={styles.h3}>
           Possible dietary triggers:
+        </Text>
+        <Text style={styles.p}>
+          [Yummly API Content Will Go Here]
         </Text>
       </View>
     </LinearGradient>

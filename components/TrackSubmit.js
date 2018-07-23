@@ -34,7 +34,7 @@ export default function TrackSubmit(props) {
   let resultImage;
   let resultHeader;
   let resultText;
-  let actionText = <Text>Tap Analyze for additional information</Text>;
+  let actionText = <Text style={styles.p}>Tap <Text style={styles.strong}>Analyze</Text> for additional information</Text>;
   let specialText = null;
 
   if ( scaleInput !== 3 && scaleInput !== 4) {

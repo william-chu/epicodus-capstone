@@ -23,6 +23,14 @@ export default StyleSheet.create({
     paddingTop: 40,
     width: Dimensions.get('window').width,
   },
+  fullWidthImage: {
+    flex: 1,
+    width: Dimensions.get('window').width,
+  },
+  fullWidthImagePadded: {
+    flex: 1,
+    width: (Dimensions.get('window').width - 60),
+  },
   headerImage: {
     width: 80,
     height: 80,
@@ -69,6 +77,12 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
     alignSelf: 'center',
+  },
+  p: {
+    color: '#4A4A4A',
+  },
+  strong: {
+    fontWeight: 'bold',
   },
   formInput: {
     marginBottom: 5,
