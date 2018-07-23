@@ -7,6 +7,7 @@ import Track from './components/Track';
 import TrackSubmit from './components/TrackSubmit';
 import BristolScale from './components/BristolScale';
 import Analyze from './components/Analyze';
+import { genMealLogDateKey } from './components/helper';
 import { Text, View } from 'react-native';
 import styles from './components/styles';
 import { createStackNavigator } from 'react-navigation';
@@ -45,30 +46,9 @@ export default class App extends React.Component {
     this.setState({ fontLoaded: true });
   }
 
-  genMealLogDateKey = (date) => {
-    let dateNum = date.getDate();
-    let monthNum = (date.getMonth() + 1);
-    let dateStr;
-    let monthStr;
-    if (dateNum > 9) {
-      dateStr = dateNum.toString();
-    } else {
-      dateStr = '0' + dateNum.toString();
-    }
-    if (monthNum > 9) {
-      monthStr = monthNum.toString();
-    } else {
-      monthStr = '0' + monthNum.toString();
-    }
-    return (
-      date.getFullYear().toString() +
-      monthStr +
-      dateStr
-    );
-  }
   // Logs meals under YYYYMMDD > Breakfast/Lunch/Dinner > Meal Array, branching prevents overwriting of existing objects
   handleLogMealSubmit = (date, mealArr, meal) => {
-    let newMealLogDateKey = this.genMealLogDateKey(date);
+    let newMealLogDateKey = genMealLogDateKey(date);
     let newMasterMealLog;
     if (this.state.masterMealLog[newMealLogDateKey] === undefined) {
       newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
@@ -140,7 +120,7 @@ export default class App extends React.Component {
   // Tags meals correlated with sub-optimal wellness
   handleTrackSubmit = (date, scale, time) => {
     if (scale < 3 || scale > 4) {
-      let lookupMealLogDateKey = this.genMealLogDateKey(date);
+      let lookupMealLogDateKey = genMealLogDateKey(date);
       // Generate empty meal log if missing
       if (this.state.masterMealLog[lookupMealLogDateKey] === undefined) {
         let newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
@@ -158,7 +138,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.suspectMeals);
+    console.log(this.state);
     return this.state.fontLoaded && <RootStack
       screenProps={{
         onTrackSubmit: this.handleTrackSubmit,
