@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   // General App Styles Go Here
@@ -10,6 +10,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: Dimensions.get('window').width,
   },
   container: {
     flex: 1,
@@ -20,6 +21,7 @@ export default StyleSheet.create({
     paddingRight: 20,
     paddingBottom: 20,
     paddingTop: 40,
+    width: Dimensions.get('window').width,
   },
   headerImage: {
     width: 80,

@@ -22,7 +22,7 @@ const compStyles = StyleSheet.create ({
     marginTop: 20,
   },
   actionSection: {
-    marginTop: 40,
+    marginTop: 20,
   },
   actionBtn: {
     width: 100,
@@ -79,8 +79,8 @@ export default class Home extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <Image
+            style={{ width:'100%'}}
             resizeMode='contain'
-            style={{flex:1, aspectRatio:4}}
             source={footer}
           />
         </View>
