@@ -7,7 +7,7 @@ import Track from './components/Track';
 import TrackSubmit from './components/TrackSubmit';
 import BristolScale from './components/BristolScale';
 import Analyze from './components/Analyze';
-import { genMealLogDateKey } from './components/helper';
+import { genMealLogDateKey, getSuspectMeals } from './components/helper';
 import { Text, View } from 'react-native';
 import styles from './components/styles';
 import { createStackNavigator } from 'react-navigation';
@@ -63,60 +63,7 @@ export default class App extends React.Component {
     }
     this.setState({ masterMealLog: newMasterMealLog });
   }
-  // Logs suspect meals under YYYYMMDD > Breakfast/Lunch/Dinner > Meal Array, branching prevents overwriting of existing objects
-  getSuspectMeals = (mealLogDateKey, time) => {
-    let lookupMeal1;
-    let lookupMeal2;
-    let lookupMealIndex1;
-    let lookupMealIndex2;
-    let lookupMealDate1;
-    let lookupMealDate2;
-    if (time === 'Morning') {
-      lookupMeal1 = 'Dinner';
-      lookupMeal2 = 'Lunch';
-      lookupMealIndex1 = (Object.keys(this.state.masterMealLog).indexOf(mealLogDateKey)) - 2;
-      lookupMealIndex2 = lookupMealIndex1;
-    } else if (time === 'Afternoon') {
-      lookupMeal1 = 'Breakfast';
-      lookupMeal2 = 'Dinner';
-      lookupMealIndex1 = (Object.keys(this.state.masterMealLog).indexOf(mealLogDateKey)) - 1;
-      lookupMealIndex2 = lookupMealIndex1 - 1 ;
-    } else {
-      lookupMeal1 = 'Lunch';
-      lookupMeal2 = 'Breakfast';
-      lookupMealIndex1 = (Object.keys(this.state.masterMealLog).indexOf(mealLogDateKey)) - 1;
-      lookupMealIndex2 = lookupMealIndex1;
-    }
-    lookupMealDate1 = Object.keys(this.state.masterMealLog)[lookupMealIndex1];
-    lookupMealDate2 = Object.keys(this.state.masterMealLog)[lookupMealIndex2];
-    let newSuspectMeals;
-    if (lookupMealDate1 === lookupMealDate2 && this.state.suspectMeals[lookupMealDate1] === undefined) {
-      newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
-        [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
-      });
-      newSuspectMeals[lookupMealDate2][lookupMeal2] = this.state.masterMealLog[lookupMealDate2][lookupMeal2];
-    } else if (this.state.suspectMeals[lookupMealDate1] === undefined && this.state.suspectMeals[lookupMealDate2] === undefined) {
-      newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
-        [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
-        [lookupMealDate2]: { [lookupMeal2]: this.state.masterMealLog[lookupMealDate2][lookupMeal2] }
-      });
-    } else if (lookupMealDate1 !== lookupMealDate2 && this.state.suspectMeals[lookupMealDate1] === undefined) {
-      newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
-        [lookupMealDate1]: { [lookupMeal1]: this.state.masterMealLog[lookupMealDate1][lookupMeal1] },
-      });
-      newSuspectMeals[lookupMealDate2][lookupMeal2] = this.state.masterMealLog[lookupMealDate2][lookupMeal2];
-    } else if (lookupMealDate1 !== lookupMealDate2 && this.state.suspectMeals[lookupMealDate2] === undefined) {
-      newSuspectMeals = Object.assign({}, this.state.suspectMeals, {
-        [lookupMealDate2]: { [lookupMeal2]: this.state.masterMealLog[lookupMealDate2][lookupMeal2] },
-      });
-      newSuspectMeals[lookupMealDate1][lookupMeal1] = this.state.masterMealLog[lookupMealDate1][lookupMeal1];
-    } else {
-      newSuspectMeals = Object.assign({}, this.state.suspectMeals);
-      newSuspectMeals[lookupMealDate1][lookupMeal1] = this.state.masterMealLog[lookupMealDate1][lookupMeal1];
-      newSuspectMeals[lookupMealDate2][lookupMeal2] = this.state.masterMealLog[lookupMealDate2][lookupMeal2];
-    }
-    this.setState({ suspectMeals: newSuspectMeals });
-  }
+
   // Tags meals correlated with sub-optimal wellness
   handleTrackSubmit = (date, scale, time) => {
     if (scale < 3 || scale > 4) {
@@ -128,11 +75,12 @@ export default class App extends React.Component {
         });
         this.setState({ masterMealLog: newMasterMealLog },
           () => {
-            this.getSuspectMeals(lookupMealLogDateKey, time);
+            // this.setState({ suspectMeals: newSuspectMeals });
+            this.setState({ suspectMeals: getSuspectMeals(this.state.masterMealLog, this.state.suspectMeals, lookupMealLogDateKey, time) });
           }
         );
       } else {
-        this.getSuspectMeals(lookupMealLogDateKey, time);
+        this.setState({ suspectMeals: getSuspectMeals(this.state.masterMealLog, this.state.suspectMeals, lookupMealLogDateKey, time) });
       }
     }
   }
