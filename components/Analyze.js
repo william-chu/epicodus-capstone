@@ -9,7 +9,6 @@ import {
 import { LinearGradient } from 'expo';
 import styles from './styles';
 import analyzeBtn from '../assets/images/analyzebtn.png';
-import footer from '../assets/images/footer.png';
 
 const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
@@ -36,10 +35,6 @@ export default function Analyze(props) {
         <Text>
           Possible dietary triggers:
         </Text>
-        <Image
-          source={footer}
-          resizeMode={Image.resizeMode.center}
-        />
       </View>
     </LinearGradient>
   );
