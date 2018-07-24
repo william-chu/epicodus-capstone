@@ -75,3 +75,32 @@ export function getSuspectMeals(masterMealLog, suspectMeals, mealLogDateKey, tim
   }
   return newSuspectMeals;
 }
+
+// Finds suspect meals to display on TrackSubmit screen
+export function displaySuspectMeals(masterMealLog, mealLogDateKey, time) {
+  let lookupMeal1;
+  let lookupMeal2;
+  let lookupMealIndex1;
+  let lookupMealIndex2;
+  let lookupMealDate1;
+  let lookupMealDate2;
+  if (time === 'Morning') {
+    lookupMeal1 = 'Dinner';
+    lookupMeal2 = 'Lunch';
+    lookupMealIndex1 = (Object.keys(masterMealLog).indexOf(mealLogDateKey)) - 2;
+    lookupMealIndex2 = lookupMealIndex1;
+  } else if (time === 'Afternoon') {
+    lookupMeal1 = 'Breakfast';
+    lookupMeal2 = 'Dinner';
+    lookupMealIndex1 = (Object.keys(masterMealLog).indexOf(mealLogDateKey)) - 1;
+    lookupMealIndex2 = lookupMealIndex1 - 1 ;
+  } else {
+    lookupMeal1 = 'Lunch';
+    lookupMeal2 = 'Breakfast';
+    lookupMealIndex1 = (Object.keys(masterMealLog).indexOf(mealLogDateKey)) - 1;
+    lookupMealIndex2 = lookupMealIndex1;
+  }
+  lookupMealDate1 = Object.keys(masterMealLog)[lookupMealIndex1];
+  lookupMealDate2 = Object.keys(masterMealLog)[lookupMealIndex2];
+  return suspectMealsToDisplay = [lookupMealDate1, lookupMeal1, masterMealLog[lookupMealDate1][lookupMeal1], lookupMealDate2, lookupMeal2, masterMealLog[lookupMealDate2][lookupMeal2]];
+}
