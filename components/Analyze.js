@@ -56,9 +56,7 @@ export default function Analyze(props) {
             [Yummly API Content Will Go Here]
           </Text>
         </View>
-        <TouchableOpacity onPress={() => {
-            props.navigation.navigate('Home')
-        }}>
+        <TouchableOpacity onPress={() => {props.navigation.navigate('Home')}}>
           <Text style={styles.btnPurple}>DONE</Text>
         </TouchableOpacity>
       </View>
