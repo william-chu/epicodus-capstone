@@ -21,7 +21,7 @@ export function genMealLogDateKey(date) {
   );
 }
 
-// Finds suspect meals under YYYYMMDD > Breakfast/Lunch/Dinner > Meal Array, branching prevents overwriting of existing objects
+// Finds suspect meals under YYYYMMDD > Breakfast/Lunch/Dinner > Meal Array for App state, branching prevents overwriting of existing objects
 export function getSuspectMeals(masterMealLog, suspectMeals, mealLogDateKey, time) {
   let lookupMeal1;
   let lookupMeal2;

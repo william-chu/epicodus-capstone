@@ -14,7 +14,19 @@ const compStyles = StyleSheet.create({
   // Component Specific Styles Go Here
 });
 
+function getSuspectMealsArr(suspectMealsList) {
+    let output = [];
+    suspectMealsList.forEach(function(dateKey) {
+        (Object.values(dateKey)).forEach(function(meal) {
+          output.push(meal.join(', '));
+        });
+    });
+    return output;
+}
+
 export default function Analyze(props) {
+  let suspectMealsArr = getSuspectMealsArr(Object.values(props.screenProps.suspectMeals));
+  console.log(suspectMealsArr);
   return (
     <LinearGradient
       colors={['#B0A1F2', '#FFF', '#FFF']}
@@ -32,6 +44,11 @@ export default function Analyze(props) {
         <Text style={styles.h4}>
           These are the logged meals that correlated with you not feeling well in the last 30 days:
         </Text>
+        <View>
+          {suspectMealsArr.map((meal, index) => (
+            <Text key={index} style={styles.h4}><Text style={styles.h1}>Meal {index + 1} :</Text> {meal}</Text>)
+          )}
+        </View>
         <Text style={styles.h3}>
           Possible dietary triggers:
         </Text>
