@@ -32,8 +32,8 @@ export default function Analyze(props) {
           <Image source={analyzeBtn} style={styles.headerImage} />
           <Text style={styles.h1}>Our Analysis</Text>
         </View>
+        <Text style={styles.h3}>Meals containing possible triggers:</Text>
         <View>
-          <Text style={styles.h3}>Meals containing possible triggers:</Text>
           {suspectMealsArr.map((meal, index) => (
             <Text key={index} style={styles.h4}>
               <Text style={styles.h1}>Meal {index + 1} :</Text> {meal}

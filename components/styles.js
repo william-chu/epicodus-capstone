@@ -44,7 +44,7 @@ export default StyleSheet.create({
     justifyContent: "space-around"
   },
   textLeft: {
-    textAlign: "left"
+    textAlign: "left",
   },
   redText: {
     color: "red"
