@@ -86,7 +86,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
+    console.log(this.state);
     return this.state.fontLoaded && <RootStack
       screenProps={{
         onTrackSubmit: this.handleTrackSubmit,

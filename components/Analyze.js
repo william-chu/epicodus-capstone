@@ -26,7 +26,6 @@ function getSuspectMealsArr(suspectMealsList) {
 
 export default function Analyze(props) {
   let suspectMealsArr = getSuspectMealsArr(Object.values(props.screenProps.suspectMeals));
-  console.log(suspectMealsArr);
   return (
     <LinearGradient
       colors={['#B0A1F2', '#FFF', '#FFF']}
@@ -41,20 +40,27 @@ export default function Analyze(props) {
             Our Analysis
           </Text>
         </View>
-        <Text style={styles.h4}>
-          These are the logged meals that correlated with you not feeling well in the last 30 days:
-        </Text>
         <View>
+          <Text style={styles.h3}>
+            Meals containing possible triggers:
+          </Text>
           {suspectMealsArr.map((meal, index) => (
             <Text key={index} style={styles.h4}><Text style={styles.h1}>Meal {index + 1} :</Text> {meal}</Text>)
           )}
         </View>
-        <Text style={styles.h3}>
-          Possible dietary triggers:
-        </Text>
-        <Text style={styles.p}>
-          [Yummly API Content Will Go Here]
-        </Text>
+        <View>
+          <Text style={styles.h3}>
+            Possible dietary triggers:
+          </Text>
+          <Text style={styles.p}>
+            [Yummly API Content Will Go Here]
+          </Text>
+        </View>
+        <TouchableOpacity onPress={() => {
+            props.navigation.navigate('Home')
+        }}>
+          <Text style={styles.btnPurple}>DONE</Text>
+        </TouchableOpacity>
       </View>
     </LinearGradient>
   );

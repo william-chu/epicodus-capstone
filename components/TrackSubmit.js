@@ -21,20 +21,24 @@ export default function TrackSubmit(props) {
   let scaleInput = props.navigation.getParam('scaleInput');
   let time = props.navigation.getParam('timeInput');
   let mealLogDateKey = genMealLogDateKey(props.navigation.getParam('date'));
-  let suspectMealsToDisplay = displaySuspectMeals(props.screenProps.masterMealLog, mealLogDateKey, time)
-  let suspectHeader = <Text style={styles.h3}>Meals eaten 30-40 hours ago:</Text>;
   let resultImage;
   let resultHeader;
   let resultText;
+  let suspectHeader = <Text style={styles.h3}>Meals eaten 30-40 hours ago:</Text>;
+  let resultSuspectMeals;
   let actionText = <Text style={styles.p}>View <Text style={styles.strong}>Analyze</Text> screen for additional information</Text>;
   let specialText = null;
-  resultSuspectMeals =
+
+  if (scaleInput !== 3 && scaleInput !== 4) {
+    let suspectMealsToDisplay = displaySuspectMeals(props.screenProps.masterMealLog, mealLogDateKey, time);
+    resultSuspectMeals =
     <View>
       <Text style={styles.h1}>{suspectMealsToDisplay[0]} - {suspectMealsToDisplay[1]}</Text>
       <Text style={styles.h4}>{suspectMealsToDisplay[2].join(', ')}</Text>
       <Text style={styles.h1}>{suspectMealsToDisplay[3]} - {suspectMealsToDisplay[4]}</Text>
       <Text style={styles.h4}>{suspectMealsToDisplay[5].join(', ')}</Text>
     </View>;
+  }
 
   if (scaleInput === 1 || scaleInput === 7) {
     resultImage = <Image source={badResult} style={styles.headerImage} />;
@@ -44,12 +48,8 @@ export default function TrackSubmit(props) {
   } else if (scaleInput === 3 || scaleInput === 4) {
     resultImage = <Image source={goodResult} style={styles.headerImage} />;
     resultHeader = 'In the Zone';
-    resultText =
-      <View>
-        <Text style={styles.h3}>You are in the optimal range.</Text>;
-        <Text style={styles.h3}>Keep it up!</Text>;
-      </View>
-    suspectHeader = null;
+    resultText = <Text style={styles.h3}>You are in the optimal range.</Text>;
+    suspectHeader = <Text style={styles.h3}>Keep it up!</Text>;
   } else {
     resultImage = <Image source={okayResult} style={styles.headerImage} />;
     resultHeader = 'Room to Improve';

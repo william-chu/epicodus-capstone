@@ -102,5 +102,5 @@ export function displaySuspectMeals(masterMealLog, mealLogDateKey, time) {
   }
   lookupMealDate1 = Object.keys(masterMealLog)[lookupMealIndex1];
   lookupMealDate2 = Object.keys(masterMealLog)[lookupMealIndex2];
-  return suspectMealsToDisplay = [lookupMealDate1, lookupMeal1, masterMealLog[lookupMealDate1][lookupMeal1], lookupMealDate2, lookupMeal2, masterMealLog[lookupMealDate2][lookupMeal2]];
+  return [lookupMealDate1, lookupMeal1, masterMealLog[lookupMealDate1][lookupMeal1], lookupMealDate2, lookupMeal2, masterMealLog[lookupMealDate2][lookupMeal2]];
 }

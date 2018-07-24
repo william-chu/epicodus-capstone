@@ -35,11 +35,12 @@ export default function LogMealSubmit(props) {
           </TouchableOpacity>
         </View>
         <Text style={styles.h3}>
-          Accurately logging your diet every day will increase the accuracy of our analysis.
+          Accurately log your diet every day to increase the accuracy of our analysis.
         </Text>
         <Text style={styles.h3}>
           Keep it up!
         </Text>
+        <Text style={styles.p}>Use <Text style={styles.strong}>Track BM</Text> to find meals with possible triggers</Text>
       </View>
     </LinearGradient>
   );
