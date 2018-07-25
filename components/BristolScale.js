@@ -33,17 +33,17 @@ export default function BristolScale(props) {
           <Text style={styles.h1}>
             Bristol Scale
           </Text>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Track')}>
-            <Text style={styles.btn}>
-              GO BACK
-            </Text>
-          </TouchableOpacity>
         </View>
         <Image
           source={bristolScale}
           style={styles.fullWidthImagePadded}
           resizeMode='contain'
         />
+        <TouchableOpacity onPress={() => {
+            props.navigation.navigate('Track')
+        }}>
+          <Text style={styles.btnPurple}>BACK</Text>
+        </TouchableOpacity>
       </View>
     </LinearGradient>
   );

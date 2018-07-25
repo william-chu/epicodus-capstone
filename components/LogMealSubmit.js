@@ -28,11 +28,6 @@ export default function LogMealSubmit(props) {
           <Text style={styles.h1}>
             Meal Logged
           </Text>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Home')} >
-            <Text style={styles.btn}>
-              GO BACK
-            </Text>
-          </TouchableOpacity>
         </View>
         <Text style={styles.h3}>
           Accurately log your diet every day to increase the accuracy of our analysis.
@@ -41,6 +36,11 @@ export default function LogMealSubmit(props) {
           Keep it up!
         </Text>
         <Text style={styles.p}>Use <Text style={styles.strong}>Track BM</Text> to find meals with possible triggers</Text>
+        <TouchableOpacity onPress={() => {
+            props.navigation.navigate('Home')
+        }}>
+          <Text style={styles.btnPurple}>DONE</Text>
+        </TouchableOpacity>
       </View>
     </LinearGradient>
   );

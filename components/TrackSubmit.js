@@ -64,9 +64,6 @@ export default function TrackSubmit(props) {
         <View style={styles.flex}>
           {resultImage}
           <Text style={styles.h1}>{resultHeader}</Text>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Home')} >
-            <Text style={styles.btn}>GO BACK</Text>
-          </TouchableOpacity>
         </View>
         {resultText}
         <View>
@@ -75,6 +72,11 @@ export default function TrackSubmit(props) {
         </View>
         {actionText}
         {specialText}
+        <TouchableOpacity onPress={() => {
+            props.navigation.navigate('Home')
+        }}>
+          <Text style={styles.btnPurple}>DONE</Text>
+        </TouchableOpacity>
       </View>
     </LinearGradient>
   );
