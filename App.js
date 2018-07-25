@@ -76,7 +76,11 @@ export default class App extends React.Component {
       // Generate empty meal log if missing
       if (this.state.masterMealLog[lookupMealLogDateKey] === undefined) {
         let newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
-          [lookupMealLogDateKey]: {}
+          [lookupMealLogDateKey]: {
+            ['Breakfast']: [] ,
+            ['Lunch']: [] ,
+            ['Dinner']: [] ,
+          }
         });
         this.setState({ masterMealLog: newMasterMealLog },
           () => {
