@@ -52,9 +52,14 @@ export default class App extends React.Component {
     let newMasterMealLog;
     if (this.state.masterMealLog[newMealLogDateKey] === undefined) {
       newMasterMealLog = Object.assign({}, this.state.masterMealLog, {
-        [newMealLogDateKey]: { [meal]: mealArr }
+        [newMealLogDateKey]: {
+          ['Breakfast']: [] ,
+          ['Lunch']: [] ,
+          ['Dinner']: [] ,
+          [meal]: mealArr
+        }
       });
-    } else if (this.state.masterMealLog[newMealLogDateKey][meal] === undefined ) {
+    } else if (this.state.masterMealLog[newMealLogDateKey][meal] === [] ) {
       newMasterMealLog = Object.assign({}, this.state.masterMealLog);
       newMasterMealLog[newMealLogDateKey][meal] = mealArr;
     } else {
@@ -75,7 +80,6 @@ export default class App extends React.Component {
         });
         this.setState({ masterMealLog: newMasterMealLog },
           () => {
-            // this.setState({ suspectMeals: newSuspectMeals });
             this.setState({ suspectMeals: getSuspectMeals(this.state.masterMealLog, this.state.suspectMeals, lookupMealLogDateKey, time) });
           }
         );
