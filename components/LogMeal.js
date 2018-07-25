@@ -85,8 +85,12 @@ export default class LogMeal extends React.Component {
     onLogMealSubmit(this.state.selectedDate, this.state.mealInputArr, this.state.selectedMealInput);
   }
   handleMealInputToArr = (text) => {
-    let newMealInputArr = text.split(',').map(function(item) {
-      return item.trim().toLowerCase();
+    let newMealInputArr = [];
+    text.split(",").map(function(item) {
+      let itemChecker = item.trim();
+      if (itemChecker.length > 1) {
+        newMealInputArr.push(itemChecker.toLowerCase());
+      }
     });
     this.setState({ mealInputArr: newMealInputArr });
   }
